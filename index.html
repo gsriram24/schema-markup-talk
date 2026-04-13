@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>
+			Your Website Isn't SEO-Ready (Until You Add Schema Markup)
+		</title>
+
+		<!-- Reveal.js -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css"
+		/>
+
+		<!-- Highlight.js theme for code -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css"
+		/>
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Custom theme -->
+		<link rel="stylesheet" href="css/custom.css" />
+
+		<style>
+			/* Override General Sans with DM Sans (freely available via Google Fonts) */
+			.reveal {
+				font-family:
+					"DM Sans",
+					-apple-system,
+					BlinkMacSystemFont,
+					sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- ==========================================
+           SLIDE 1: Title
+           ========================================== -->
+				<section style="padding: 48px 48px">
+					<div
+						style="
+							display: grid;
+							grid-template-columns: 1fr 300px;
+							gap: 32px;
+							align-items: center;
+							height: 100%;
+						"
+					>
+						<div>
+							<h1>Your Website Isn't<br />SEO-Ready</h1>
+							<div class="accent-line"></div>
+							<p class="subtitle">Until You Add Schema Markup</p>
+							<br />
+							<p
+								style="
+									color: var(--text);
+									font-size: 0.75em;
+									margin-bottom: 4px;
+									font-weight: 500;
+								"
+							>
+								G Sriram
+							</p>
+							<p
+								style="
+									font-size: 0.55em;
+									color: var(--text-dim);
+									margin-bottom: 8px;
+								"
+							>
+								SDE III at HighLevel
+							</p>
+							<div class="tag">
+								Built schema markup tools at HighLevel &mdash;
+								140+ schema types
+							</div>
+						</div>
+
+						<!-- QR Code: Replace YOUR_SLIDES_URL with the hosted slides URL -->
+						<div
+							style="
+								text-align: center;
+								display: flex;
+								flex-direction: column;
+								align-items: center;
+								justify-content: center;
+								height: 100%;
+							"
+						>
+							<img
+								src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://YOUR_SLIDES_URL&bgcolor=0a0e27&color=00e5ff"
+								alt="Slides QR Code"
+								style="
+									width: 260px;
+									height: 260px;
+									border-radius: 10px;
+									border: 2px solid rgba(0, 229, 255, 0.2);
+								"
+							/>
+							<p
+								style="
+									font-family:
+										&quot;JetBrains Mono&quot;, monospace;
+									font-size: 0.45em;
+									color: var(--text-muted);
+									margin-top: 10px;
+								"
+							>
+								Scan to follow along
+							</p>
+						</div>
+					</div>
+
+					<aside class="notes">
+						Quick intro — one sentence about yourself. "I'm Sriram,
+						I'm an SDE III at HighLevel where I built the schema
+						markup builder that supports 140+ schema types." Point
+						at the QR code — "scan this to follow along on your
+						phone." Then set the expectation: "This talk is
+						practical and code-heavy. You'll walk out knowing how to
+						add schema markup to your projects today."
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 2: The Hook — What Google Actually Sees
+           ========================================== -->
+				<section>
+					<h2>What Google Actually Sees</h2>
+					<div class="accent-line"></div>
+
+					<div class="split-layout">
+						<!-- Left: Pretty website -->
+						<div>
+							<p
+								style="
+									font-size: 0.45em;
+									color: var(--text-muted);
+									margin-bottom: 6px;
+									font-family:
+										&quot;JetBrains Mono&quot;, monospace;
+								"
+							>
+								What you built
+							</p>
+							<div class="mock-website">
+								<div class="mock-nav">
+									<span class="dot-r"></span>
+									<span class="dot-y"></span>
+									<span class="dot-g"></span>
+									<span>acme.com</span>
+								</div>
+								<div class="mock-body">
+									<div class="mock-hero">
+										Welcome to Acme Corp<br /><span
+											style="
+												font-weight: 400;
+												font-size: 10px;
+												opacity: 0.85;
+											"
+											>Building the future, one widget at
+											a time</span
+										>
+									</div>
+									<div class="mock-cards">
+										<div class="mock-card">
+											<div class="card-icon">&#9881;</div>
+											Products
+										</div>
+										<div class="mock-card">
+											<div class="card-icon">&#9733;</div>
+											Reviews
+										</div>
+										<div class="mock-card">
+											<div class="card-icon">&#9993;</div>
+											Contact
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Right: Raw HTML -->
+						<div>
+							<p
+								style="
+									font-size: 0.45em;
+									color: var(--text-muted);
+									margin-bottom: 6px;
+									font-family:
+										&quot;JetBrains Mono&quot;, monospace;
+								"
+							>
+								What Google reads
+							</p>
+							<div class="mock-html">
+								<span class="tag-name">&lt;div</span>
+								<span class="attr-name">class=</span
+								><span class="attr-val">"hero"</span
+								><span class="tag-name">&gt;</span><br />
+								&nbsp;&nbsp;<span class="tag-name"
+									>&lt;h1&gt;</span
+								>Welcome to Acme Corp<span class="tag-name"
+									>&lt;/h1&gt;</span
+								><br />
+								&nbsp;&nbsp;<span class="tag-name"
+									>&lt;p&gt;</span
+								>Building the future...<span class="tag-name"
+									>&lt;/p&gt;</span
+								><br />
+								<span class="tag-name">&lt;/div&gt;</span><br />
+								<span class="tag-name">&lt;div</span>
+								<span class="attr-name">class=</span
+								><span class="attr-val">"cards"</span
+								><span class="tag-name">&gt;</span><br />
+								&nbsp;&nbsp;<span class="tag-name"
+									>&lt;div&gt;</span
+								>Products<span class="tag-name"
+									>&lt;/div&gt;</span
+								><br />
+								&nbsp;&nbsp;<span class="tag-name"
+									>&lt;div&gt;</span
+								>Reviews<span class="tag-name"
+									>&lt;/div&gt;</span
+								><br />
+								&nbsp;&nbsp;<span class="tag-name"
+									>&lt;div&gt;</span
+								>Contact<span class="tag-name"
+									>&lt;/div&gt;</span
+								><br />
+								<span class="tag-name">&lt;/div&gt;</span><br />
+								<br />
+								<span class="comment"
+									>&lt;!-- No structured data. --&gt;</span
+								><br />
+								<span class="comment"
+									>&lt;!-- Google has to guess. --&gt;</span
+								>
+							</div>
+						</div>
+					</div>
+
+					<p
+						style="
+							text-align: center;
+							margin-top: 16px;
+							font-family: &quot;JetBrains Mono&quot;, monospace;
+							font-size: 0.6em;
+							color: var(--cyan);
+						"
+					>
+						"You designed for humans. Search engines read
+						<em>this</em>."
+					</p>
+
+					<aside class="notes">
+						You spend weeks perfecting your UI — beautiful layouts,
+						smooth animations. But to Google, your site is just a
+						pile of divs and spans. There's no way for a crawler to
+						know that this div is your business name, that list is
+						your FAQ, or that number is a product price. Schema
+						markup bridges that gap. It's the difference between
+						throwing a document at someone and handing them a
+						filled-out form.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 3: The Analogy — Name Tags at a Party
+           ========================================== -->
+				<section>
+					<h2>Schema = Name Tags<br />at a Party</h2>
+					<div class="accent-line"></div>
+
+					<div class="nametag-grid">
+						<div>
+							<div class="nametag-card anonymous">
+								<div class="icon">&#128100;</div>
+								<p>
+									No name. No role.<br />Search engines
+									<strong>guess</strong>.
+								</p>
+							</div>
+							<p class="nametag-label bad">
+								Without schema markup
+							</p>
+						</div>
+
+						<div class="fragment fade-up" data-fragment-index="1">
+							<div class="nametag-card identified">
+								<div class="badge">HELLO, I AM</div>
+								<div class="name">Acme Corp</div>
+								<div class="role">
+									Organization &bull; San Francisco &bull;
+									acme.com
+								</div>
+							</div>
+							<p class="nametag-label good">With schema markup</p>
+						</div>
+					</div>
+
+					<p
+						class="fragment fade-up"
+						data-fragment-index="1"
+						style="
+							text-align: center;
+							margin-top: 20px;
+							font-size: 0.6em;
+							color: var(--text-dim);
+						"
+					>
+						Structured data is how your website
+						<em>introduces itself</em> to machines.
+					</p>
+
+					<aside class="notes">
+						Simple analogy: imagine walking into a party with no
+						name tag. People have to guess who you are from context
+						— what you look like, who you're standing next to.
+						That's what Google does with your site without schema.
+						Now imagine wearing a name tag that says your name, your
+						role, your company. That's schema markup — you
+						explicitly declare what your content is, instead of
+						hoping Google figures it out.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 4: What is Schema Markup?
+           ========================================== -->
+				<section>
+					<h2>What is Schema Markup?</h2>
+					<div class="accent-line"></div>
+
+					<ul>
+						<li>
+							<strong>Shared vocabulary</strong> from Schema.org
+							&mdash; maintained by Google, Microsoft, Yahoo,
+							Yandex
+						</li>
+						<li>
+							Tells search engines
+							<em>what your content means</em>, not just what it
+							says
+						</li>
+						<li>
+							<strong>Three formats:</strong> JSON-LD, Microdata,
+							RDFa &mdash; <em>JSON-LD wins</em> (recommended by
+							Google)
+						</li>
+						<li class="fragment fade-up">
+							Just a
+							<code
+								>&lt;script type="application/ld+json"&gt;</code
+							>
+							tag &mdash; <strong>no HTML changes needed</strong>
+						</li>
+					</ul>
+
+					<aside class="notes">
+						Schema.org is the shared vocabulary — think of it as a
+						contract between you and search engines. JSON-LD won the
+						format war. Why do we love it? Because it sits in a
+						script tag in your head — completely separate from your
+						markup. No need to sprinkle data attributes across your
+						HTML like Microdata requires. As developers, we love
+						separation of concerns. JSON-LD is exactly that. Drop a
+						script tag, fill in the fields, done.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 5: Why Should You Care?
+           ========================================== -->
+				<section>
+					<h2>Why Should You Care?</h2>
+					<div class="accent-line"></div>
+
+					<div
+						style="
+							display: grid;
+							grid-template-columns: 1fr 1fr;
+							gap: 20px;
+						"
+					>
+						<!-- Left: Bullet points -->
+						<div>
+							<ul>
+								<li>
+									<strong>Rich results</strong> &mdash; stars,
+									FAQs, prices directly in search
+								</li>
+								<li>
+									<strong>AI search</strong> &mdash;
+									Perplexity, ChatGPT Search, Google AI
+									Overviews rely on structured data
+								</li>
+								<li>
+									<strong>CTR boost</strong> &mdash; not a
+									direct ranking signal, but rich results get
+									more clicks
+								</li>
+							</ul>
+						</div>
+
+						<!-- Right: CSS mock comparison -->
+						<div class="fragment fade-up">
+							<div class="google-results">
+								<div>
+									<p class="result-label plain">
+										&#9744; Without schema
+									</p>
+									<div class="google-result">
+										<div class="result-url">
+											<div class="favicon">A</div>
+											acme.com
+										</div>
+										<div class="result-title">
+											Acme Corp - Building the Future
+										</div>
+										<div class="result-desc">
+											Acme Corp is a leading provider of
+											innovative widgets and solutions for
+											businesses worldwide.
+										</div>
+									</div>
+								</div>
+
+								<div>
+									<p class="result-label rich-label">
+										&#9745; With schema
+									</p>
+									<div class="google-result rich">
+										<div class="result-url">
+											<div class="favicon">A</div>
+											acme.com
+										</div>
+										<div class="result-title">
+											Acme Corp - Building the Future
+										</div>
+										<div class="stars">
+											<span class="star"
+												>&#9733;&#9733;&#9733;&#9733;&#9733;</span
+											>
+											<span class="rating"
+												>4.8 (2,340 reviews)</span
+											>
+										</div>
+										<div class="result-desc">
+											Acme Corp is a leading provider of
+											innovative widgets...
+										</div>
+										<div class="faq-item">
+											<span>What does Acme Corp do?</span>
+											<span class="arrow">&#9662;</span>
+										</div>
+										<div class="faq-item">
+											<span
+												>Where is Acme Corp
+												located?</span
+											>
+											<span class="arrow">&#9662;</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<aside class="notes">
+						Schema won't magically rank you number 1. But when two
+						results compete for the same spot, the one with stars,
+						prices, or FAQ dropdowns gets the click. Look at the
+						difference — same site, same content. The one with
+						schema takes up more space, looks more trustworthy,
+						shows more info. And with AI search growing fast —
+						Perplexity, ChatGPT Search, Google AI Overviews —
+						structured data is how AI systems extract facts about
+						your business. If you don't provide it, they guess. Or
+						worse, they skip you.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 6: JSON-LD Example — Organization
+           ========================================== -->
+				<section>
+					<h2>Your First Schema:<br />Organization</h2>
+
+					<pre><code data-trim data-noescape class="language-json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Acme Corp",
+  "url": "https://acme.com",
+  "logo": "https://acme.com/logo.png",
+  "sameAs": [
+    "https://twitter.com/acme",
+    "https://linkedin.com/company/acme"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-800-555-0100",
+    "contactType": "customer service"
+  }
+}</code></pre>
+
+					<div class="callout">
+						@context + @type are always required &mdash; every
+						schema starts here
+					</div>
+					<div class="callout">
+						sameAs links your social profiles &mdash; helps build
+						your Knowledge Graph entry
+					</div>
+
+					<aside class="notes">
+						Walk through each field. @context tells the parser
+						"we're using Schema.org vocabulary." @type says "this is
+						an Organization." Every other field describes attributes
+						of that entity. The sameAs field is powerful — it links
+						your brand across platforms, helping Google build a
+						Knowledge Graph entry for you. contactPoint is nested —
+						it has its own @type, showing how schema represents
+						relationships. This is the simplest schema to add. Put
+						it on your homepage today — it takes 10 minutes.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 7: JSON-LD Example — FAQPage
+           ========================================== -->
+				<section style="padding: 32px 64px">
+					<h2 style="margin-bottom: 0.2em">
+						Highest-ROI Schema: FAQPage
+					</h2>
+
+					<div
+						style="
+							display: flex;
+							justify-content: space-between;
+							gap: 20px;
+							margin-top: 24px;
+						"
+					>
+						<div>
+							<pre
+								style="font-size: 0.8em"
+							><code data-trim data-noescape class="language-json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is schema markup?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Schema markup is structured
+        data you add to your website..."
+    }
+  }]
+}</code></pre>
+							<div class="callout">
+								mainEntity is an array of Questions
+							</div>
+							<div class="callout" style="color: var(--warning)">
+								acceptedAnswer must be an object, not a string!
+							</div>
+						</div>
+
+						<div style="display: flex; align-items: start">
+							<div class="screenshot-slot">
+								<img
+									src="assets/images/faq-rich-result.png"
+									alt="FAQ rich result in Google"
+									style="
+										max-height: 440px;
+										width: 100%;
+										object-fit: contain;
+										border-radius: 8px;
+									"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<aside class="notes">
+						This is the highest-ROI schema you can add. If you have
+						any FAQ content on your site — and most sites do — this
+						is free real estate in search results. Google will show
+						expandable Q&A dropdowns right on the search page. Note
+						the nesting carefully: mainEntity is an array, each item
+						has @type Question, and acceptedAnswer must be an object
+						with @type Answer — not just a string. This is one of
+						the most common mistakes, and we'll see it on the next
+						slides.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 8: Schema Types Quick Tour
+           ========================================== -->
+				<section>
+					<h2>Schema Types: The Ones<br />That Actually Matter</h2>
+					<div class="accent-line"></div>
+
+					<div class="schema-grid">
+						<div class="schema-card">
+							<div class="card-icon">&#127970;</div>
+							<div class="card-name">Organization</div>
+							<div class="card-desc">
+								Brand identity & socials
+							</div>
+						</div>
+						<div class="schema-card">
+							<div class="card-icon">&#128722;</div>
+							<div class="card-name">Product</div>
+							<div class="card-desc">
+								Prices, ratings, availability
+							</div>
+						</div>
+						<div class="schema-card">
+							<div class="card-icon">&#10067;</div>
+							<div class="card-name">FAQPage</div>
+							<div class="card-desc">
+								Expandable Q&A in search
+							</div>
+						</div>
+						<div class="schema-card">
+							<div class="card-icon">&#128205;</div>
+							<div class="card-name">LocalBusiness</div>
+							<div class="card-desc">Address, hours, phone</div>
+						</div>
+						<div class="schema-card">
+							<div class="card-icon">&#128240;</div>
+							<div class="card-name">Article</div>
+							<div class="card-desc">Author, date, headline</div>
+						</div>
+						<div class="schema-card">
+							<div class="card-icon">&#127915;</div>
+							<div class="card-name">Event</div>
+							<div class="card-desc">Date, location, tickets</div>
+						</div>
+						<div class="schema-card">
+							<div class="card-icon">&#128279;</div>
+							<div class="card-name">Breadcrumb</div>
+							<div class="card-desc">
+								Navigation path in results
+							</div>
+						</div>
+						<div class="schema-card">
+							<div class="card-icon">&#128221;</div>
+							<div class="card-name">HowTo</div>
+							<div class="card-desc">
+								Step-by-step instructions
+							</div>
+						</div>
+					</div>
+
+					<p
+						style="
+							text-align: center;
+							margin-top: 16px;
+							font-family: &quot;JetBrains Mono&quot;, monospace;
+							font-size: 0.52em;
+							color: var(--text-muted);
+						"
+					>
+						Schema.org has 800+ types. These ~10 cover 90% of
+						real-world use cases.
+					</p>
+
+					<aside class="notes">
+						Don't go deep on each one — just show breadth. The point
+						is: whatever content you're building, there's probably a
+						schema type for it. Product for e-commerce.
+						LocalBusiness for any brick-and-mortar. Article for
+						blogs and news sites. BreadcrumbList is underrated —
+						it's easy to add and improves how your site appears in
+						search results. You don't need to memorize these.
+						Schema.org is your reference. Just know they exist.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 9: Spot the Bug — Incorrect vs Correct
+           ========================================== -->
+				<section>
+					<h2>Spot the Bug</h2>
+					<div class="accent-line"></div>
+
+					<div class="comparison">
+						<div class="comparison-panel wrong">
+							<div class="panel-header">&#10060; Wrong</div>
+							<pre><code data-trim data-noescape class="language-json">{
+  <span class="json-error">"@type": "FAQPage",</span>
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is schema?",
+      <span class="json-error">"acceptedAnswer": "Schema is
+        structured data that..."</span>
+    }
+  ]
+}</code></pre>
+						</div>
+
+						<div
+							class="comparison-panel correct fragment fade-up"
+							data-fragment-index="2"
+						>
+							<div class="panel-header">&#9989; Correct</div>
+							<pre><code data-trim data-noescape class="language-json">{
+  <span style="color: var(--success);">"@context": "https://schema.org",</span>
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is schema?",
+      "acceptedAnswer": {
+        <span style="color: var(--success);">"@type": "Answer",</span>
+        <span style="color: var(--success);">"text": "Schema is structured
+          data that..."</span>
+      }
+    }
+  ]
+}</code></pre>
+						</div>
+					</div>
+
+					<div class="bug-list">
+						<div
+							class="bug-item fragment fade-up"
+							data-fragment-index="1"
+						>
+							<div class="bug-num">1</div>
+							Missing <code>@context</code> &mdash; parser doesn't
+							know you're using Schema.org
+						</div>
+						<div
+							class="bug-item fragment fade-up"
+							data-fragment-index="1"
+						>
+							<div class="bug-num">2</div>
+							<code>acceptedAnswer</code> is a string &mdash; must
+							be an <code>Answer</code> object
+						</div>
+						<div
+							class="bug-item fragment fade-up"
+							data-fragment-index="1"
+						>
+							<div class="bug-num">3</div>
+							Missing <code>@type: "Answer"</code> on the nested
+							object
+						</div>
+					</div>
+
+					<aside class="notes">
+						This is the slide where everyone gets uncomfortable. The
+						version on the left looks totally reasonable — it's
+						valid JSON, it has the right field names. But it fails
+						schema validation in three ways. First: no @context.
+						Without it, the parser doesn't know you're using
+						Schema.org vocabulary. Second: acceptedAnswer is a plain
+						string instead of an Answer object. Third: even if you
+						wrap it in an object, you need @type Answer. These are
+						the three most common schema bugs I see. They all pass a
+						JSON linter but fail schema validation. That's the trap.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 10: Real-World Pitfalls
+           ========================================== -->
+				<section>
+					<h2>Things That Will<br />Bite You</h2>
+					<div class="accent-line"></div>
+
+					<ul>
+						<li>
+							<strong>Validation &#8800; rich results</strong>
+							&mdash; Google decides eligibility separately;
+							passing validation is necessary but not sufficient
+						</li>
+						<li>
+							<strong>SPAs & client-side rendering</strong>
+							&mdash; Googlebot may not execute your JS; use SSR,
+							SSG, or prerendering for schema
+						</li>
+						<li>
+							<strong>Schema drift</strong> &mdash; content
+							changes but schema stays stale (wrong prices,
+							outdated FAQs, closed locations)
+						</li>
+						<li>
+							<strong>Duplicate schemas</strong> &mdash; multiple
+							conflicting schema blocks on one page confuse
+							parsers
+						</li>
+						<li>
+							<strong>No good all-in-one validator</strong>
+							&mdash; I forked Adobe's
+							<code>structured-data-validator</code> to support
+							140+ types with automatic subtype inheritance
+						</li>
+					</ul>
+
+					<aside class="notes">
+						These are things I hit firsthand while building the
+						schema builder at HighLevel. The biggest surprise:
+						validation passing doesn't mean Google shows rich
+						results — they have their own eligibility criteria
+						beyond structural correctness. The SPA issue is critical
+						for this audience — if your React or Vue app is
+						client-side rendered, Googlebot might not see your
+						schema at all. Use SSR or SSG. Schema drift is insidious
+						— someone updates a product price on the page but nobody
+						updates the schema. Now you've got mismatched data, and
+						Google can penalize you for that. And when I was
+						building support for 140+ types, no single validator
+						handled them all. Adobe's structured-data-validator was
+						the closest, but it didn't support automatic subtype
+						inheritance — like knowing that Restaurant inherits all
+						the required fields from LocalBusiness. So I forked it
+						and added that. The link is on the resources slide.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 11: Validation Workflow
+           ========================================== -->
+				<section>
+					<h2>Validate Before You Ship</h2>
+					<div class="accent-line"></div>
+
+					<div
+						style="
+							display: grid;
+							grid-template-columns: 1.1fr 0.9fr;
+							gap: 24px;
+						"
+					>
+						<div>
+							<div class="step-flow">
+								<div class="step">
+									<div class="step-num">1</div>
+									<div class="step-content">
+										<div class="step-title">
+											Write your JSON-LD
+										</div>
+										<div class="step-desc">
+											Add the script tag to your page's
+											&lt;head&gt;
+										</div>
+									</div>
+								</div>
+								<div class="step-connector"></div>
+
+								<div class="step">
+									<div class="step-num">2</div>
+									<div class="step-content">
+										<div class="step-title">
+											Google Rich Results Test
+										</div>
+										<div class="step-desc">
+											Tests if your markup qualifies for
+											rich result features
+										</div>
+									</div>
+								</div>
+								<div class="step-connector"></div>
+
+								<div class="step">
+									<div class="step-num">3</div>
+									<div class="step-content">
+										<div class="step-title">
+											Schema Markup Validator
+										</div>
+										<div class="step-desc">
+											Tests structural correctness against
+											the Schema.org spec
+										</div>
+									</div>
+								</div>
+								<div class="step-connector"></div>
+
+								<div class="step">
+									<div class="step-num">4</div>
+									<div class="step-content">
+										<div class="step-title">
+											Google Search Console
+										</div>
+										<div class="step-desc">
+											Monitor for errors and warnings
+											after deployment
+										</div>
+									</div>
+								</div>
+								<div class="step-connector"></div>
+
+								<div class="step bonus">
+									<div class="step-num">+</div>
+									<div class="step-content">
+										<div class="step-title">
+											CI/CD Validation
+										</div>
+										<div class="step-desc">
+											<code
+												>structured-data-validator</code
+											>
+											for automated checks in your
+											pipeline
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="fragment fade-up">
+							<!-- Screenshot for Rich Results Test -->
+							<div
+								class="screenshot-slot"
+								style="margin-top: 16px"
+							>
+								<img
+									src="assets/images/rich-results-test.png"
+									alt="Google Rich Results Test output"
+								/>
+							</div>
+
+							<div class="demo-box" style="margin-top: 16px">
+								&#9654; DEMO TIME
+							</div>
+						</div>
+					</div>
+
+					<aside class="notes">
+						Always validate before shipping. I've seen valid JSON
+						that was completely wrong as schema. Use two tools: the
+						Rich Results Test tells you if Google will show rich
+						results from your markup. The Schema.org validator
+						checks structural correctness — does your schema follow
+						the spec? Use both, they catch different things. After
+						deployment, Google Search Console will show you schema
+						errors across your site — check it regularly. For bonus
+						points, add the structured-data-validator to your CI/CD
+						pipeline so schema issues get caught before they ship.
+						[DEMO TIME]
+						1. Open sugarspunrun.com/the-best-pizza-dough-recipe/ — View Source, search for "application/ld+json". Show the Recipe schema.
+						2. Open cookingshooking.com/veg-pizza-with-dough/ — View Source, no JSON-LD schema.
+						3. Google "best pizza recipe" — Sugar Spun Run has stars and cook time, Cooking Shooking doesn't.
+						4. Optionally paste Organization JSON-LD into Rich Results Test to show the validation tool.
+						If internet is unreliable, show the screenshot instead.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 12: Getting Started Today
+           ========================================== -->
+				<section>
+					<h2>5 Things You Can<br />Do Tonight</h2>
+					<div class="accent-line"></div>
+
+					<ol>
+						<li>
+							<strong>Add Organization schema</strong>to your
+							homepage &mdash; takes 10 minutes
+						</li>
+						<li>
+							<strong>Add FAQPage schema</strong>to any page with
+							FAQ content &mdash; free rich results
+						</li>
+						<li>
+							<strong>Run your site</strong>through Google Rich
+							Results Test &mdash; see what you're missing
+						</li>
+						<li>
+							<strong>Use JSON-LD,</strong>not Microdata &mdash;
+							cleaner, no HTML changes, easier to maintain
+						</li>
+						<li>
+							<strong>Add validation</strong>to your deploy
+							pipeline &mdash; catch schema bugs before they ship
+						</li>
+					</ol>
+
+					<aside class="notes">
+						Keep this actionable. The goal is that everyone in this
+						room goes home and adds at least one schema to their
+						project this week. Organization schema on your homepage
+						is the "hello world" — it's the easiest starting point.
+						FAQPage is the highest ROI if you have any FAQ content.
+						And always validate. Always.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 13: Resources
+           ========================================== -->
+				<section>
+					<h2>Resources</h2>
+					<div class="accent-line"></div>
+
+					<div class="resource-list">
+						<div class="resource-item">
+							<span class="resource-icon">&#128218;</span>
+							<span class="resource-name">Schema.org</span>
+							<span class="resource-url">schema.org</span>
+						</div>
+						<div class="resource-item">
+							<span class="resource-icon">&#128270;</span>
+							<span class="resource-name"
+								>Google Search Central &mdash; Structured
+								Data</span
+							>
+							<span class="resource-url"
+								>developers.google.com</span
+							>
+						</div>
+						<div class="resource-item">
+							<span class="resource-icon">&#9989;</span>
+							<span class="resource-name"
+								>Google Rich Results Test</span
+							>
+							<span class="resource-url"
+								>search.google.com/test/rich-results</span
+							>
+						</div>
+						<div class="resource-item">
+							<span class="resource-icon">&#128295;</span>
+							<span class="resource-name"
+								>Schema Markup Validator</span
+							>
+							<span class="resource-url"
+								>validator.schema.org</span
+							>
+						</div>
+						<div class="resource-item">
+							<span class="resource-icon">&#128230;</span>
+							<span class="resource-name"
+								>structured-data-validator (my fork)</span
+							>
+							<span class="resource-url"
+								>npm: @gsriram24/structured-data-validator</span
+							>
+						</div>
+					</div>
+
+					<aside class="notes">
+						All these links will be in the slides — I'll share the
+						deck after the talk. Schema.org is your vocabulary
+						reference. Google Search Central tells you which types
+						support rich results and what fields are required vs
+						optional. The Rich Results Test is your pre-flight
+						check. And my fork of the validator is on npm if you
+						want programmatic validation in your CI/CD pipeline.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 14: Thank You / Q&A
+           ========================================== -->
+				<section>
+					<div class="thankyou-content">
+						<h1>Thank You!</h1>
+
+						<!-- QR Code: Replace YOUR_LINKTREE_URL with your actual Linktree URL -->
+						<div style="margin-top: 8px">
+							<img
+								src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://linktr.ee/YOUR_LINKTREE_URL&bgcolor=0a0e27&color=00e5ff"
+								alt="Linktree QR Code"
+								style="
+									width: 300px;
+									height: 300px;
+									border-radius: 10px;
+									border: 2px solid rgba(0, 229, 255, 0.2);
+								"
+							/>
+							<p
+								style="
+									font-family: 'JetBrains Mono', monospace;
+									font-size: 0.45em;
+									color: var(--text-muted);
+									margin-top: 8px;
+								"
+							>
+								Scan for slides, links & socials
+							</p>
+						</div>
+
+						<p
+							style="
+								font-size: 1.1em;
+								margin-top: 12px;
+								color: var(--cyan);
+								font-family: 'JetBrains Mono', monospace;
+							"
+						>
+							Questions?
+						</p>
+					</div>
+
+					<aside class="notes">
+						Open the floor for questions. Point at the QR code — it
+						links to your Linktree with slides, socials, and the
+						validator npm package. If time permits, offer to walk
+						through more examples or do a live validation demo.
+					</aside>
+				</section>
+			</div>
+		</div>
+
+		<!-- Reveal.js + Plugins -->
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+
+		<script>
+			Reveal.initialize({
+				hash: true,
+				center: false,
+				width: 1280,
+				height: 720,
+				margin: 0,
+				transition: "fade",
+				transitionSpeed: "fast",
+				slideNumber: true,
+				showSlideNumber: "all",
+				plugins: [RevealHighlight, RevealNotes],
+			});
+		</script>
+	</body>
+</html>
