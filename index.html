@@ -3,9 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>
-			Your Website Isn't SEO-Ready (Until You Add Schema Markup)
-		</title>
+		<title>Structured Data and Schema Markup for Frontend Developers</title>
 
 		<!-- Reveal.js -->
 		<link
@@ -39,7 +37,6 @@
 		<link rel="stylesheet" href="css/custom.css" />
 
 		<style>
-			/* Override General Sans with DM Sans (freely available via Google Fonts) */
 			.reveal {
 				font-family:
 					"DM Sans",
@@ -66,9 +63,12 @@
 						"
 					>
 						<div>
-							<h1>Your Website Isn't<br />SEO-Ready</h1>
+							<h1>Structured Data and<br />Schema Markup</h1>
 							<div class="accent-line"></div>
-							<p class="subtitle">Until You Add Schema Markup</p>
+							<p class="subtitle">
+								For Frontend Developers: SSR, CSR, and the AI
+								Search Era
+							</p>
 							<br />
 							<p
 								style="
@@ -90,8 +90,7 @@
 								SDE III at HighLevel
 							</p>
 							<div class="tag">
-								Built schema markup tools at HighLevel &mdash;
-								140+ schema types
+								React Nexus 2026 &mdash; Bengaluru
 							</div>
 						</div>
 
@@ -107,7 +106,7 @@
 							"
 						>
 							<img
-								src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://schema-markup-talk.web.app&bgcolor=0a0e27&color=00e5ff"
+								src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://schema-markup-nexus.web.app&bgcolor=0a0e27&color=00e5ff"
 								alt="Slides QR Code"
 								style="
 									width: 260px;
@@ -131,21 +130,20 @@
 					</div>
 
 					<aside class="notes">
-						Quick intro — one sentence about yourself. "I'm Sriram,
-						I'm an SDE III at HighLevel where I built the schema
-						markup builder that supports 140+ schema types." Point
-						at the QR code — "scan this to follow along on your
-						phone." Then set the expectation: "This talk is
-						practical and code-heavy. You'll walk out knowing how to
-						add schema markup to your projects today."
+						Hi, I'm Sriram. I work at HighLevel where I lead our
+						schema markup builder. In the next 14 minutes you're
+						going to learn what Google actually says about
+						structured data in 2026, why the AI search hype is
+						partly speculation, and a Google-documented pattern most
+						React developers don't know exists.
 					</aside>
 				</section>
 
 				<!-- ==========================================
-           SLIDE 2: The Hook — What Google Actually Sees
+           SLIDE 2: The Hook — What Google Initially Downloads
            ========================================== -->
 				<section>
-					<h2>What Google Actually Sees</h2>
+					<h2>What Google Initially Downloads</h2>
 					<div class="accent-line"></div>
 
 					<div class="split-layout">
@@ -167,24 +165,24 @@
 									<span class="dot-r"></span>
 									<span class="dot-y"></span>
 									<span class="dot-g"></span>
-									<span>acme.com</span>
+									<span>your-react-app.com</span>
 								</div>
 								<div class="mock-body">
 									<div class="mock-hero">
-										Welcome to Acme Corp<br /><span
+										Welcome to Your App<br /><span
 											style="
 												font-weight: 400;
 												font-size: 10px;
 												opacity: 0.85;
 											"
-											>Building the future, one widget at
-											a time</span
+											>A beautifully crafted React
+											experience</span
 										>
 									</div>
 									<div class="mock-cards">
 										<div class="mock-card">
 											<div class="card-icon">&#9881;</div>
-											Products
+											Features
 										</div>
 										<div class="mock-card">
 											<div class="card-icon">&#9733;</div>
@@ -210,50 +208,45 @@
 										&quot;JetBrains Mono&quot;, monospace;
 								"
 							>
-								What Google reads
+								What Googlebot sees on first fetch
 							</p>
 							<div class="mock-html">
-								<span class="tag-name">&lt;div</span>
-								<span class="attr-name">class=</span
-								><span class="attr-val">"hero"</span
-								><span class="tag-name">&gt;</span><br />
+								<span class="tag-name"
+									>&lt;!DOCTYPE html&gt;</span
+								><br />
+								<span class="tag-name">&lt;html&gt;</span><br />
+								<span class="tag-name">&lt;head&gt;</span><br />
 								&nbsp;&nbsp;<span class="tag-name"
-									>&lt;h1&gt;</span
-								>Welcome to Acme Corp<span class="tag-name"
-									>&lt;/h1&gt;</span
+									>&lt;title&gt;</span
+								>Your App<span class="tag-name"
+									>&lt;/title&gt;</span
+								><br />
+								<span class="tag-name">&lt;/head&gt;</span
+								><br />
+								<span class="tag-name">&lt;body&gt;</span><br />
+								&nbsp;&nbsp;<span class="tag-name"
+									>&lt;div</span
+								>
+								<span class="attr-name">id=</span
+								><span class="attr-val">"root"</span
+								><span class="tag-name">&gt;&lt;/div&gt;</span
 								><br />
 								&nbsp;&nbsp;<span class="tag-name"
-									>&lt;p&gt;</span
-								>Building the future...<span class="tag-name"
-									>&lt;/p&gt;</span
+									>&lt;script</span
+								>
+								<span class="attr-name">src=</span
+								><span class="attr-val">"/bundle.js"</span
+								><span class="tag-name"
+									>&gt;&lt;/script&gt;</span
 								><br />
-								<span class="tag-name">&lt;/div&gt;</span><br />
-								<span class="tag-name">&lt;div</span>
-								<span class="attr-name">class=</span
-								><span class="attr-val">"cards"</span
-								><span class="tag-name">&gt;</span><br />
-								&nbsp;&nbsp;<span class="tag-name"
-									>&lt;div&gt;</span
-								>Products<span class="tag-name"
-									>&lt;/div&gt;</span
+								<span class="tag-name">&lt;/body&gt;</span
 								><br />
-								&nbsp;&nbsp;<span class="tag-name"
-									>&lt;div&gt;</span
-								>Reviews<span class="tag-name"
-									>&lt;/div&gt;</span
+								<span class="tag-name">&lt;/html&gt;</span
 								><br />
-								&nbsp;&nbsp;<span class="tag-name"
-									>&lt;div&gt;</span
-								>Contact<span class="tag-name"
-									>&lt;/div&gt;</span
-								><br />
-								<span class="tag-name">&lt;/div&gt;</span><br />
 								<br />
 								<span class="comment"
-									>&lt;!-- No structured data. --&gt;</span
-								><br />
-								<span class="comment"
-									>&lt;!-- Google has to guess. --&gt;</span
+									>&lt;!-- Empty shell. Content is in JS.
+									--&gt;</span
 								>
 							</div>
 						</div>
@@ -264,249 +257,73 @@
 							text-align: center;
 							margin-top: 16px;
 							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 0.6em;
+							font-size: 0.55em;
 							color: var(--cyan);
 						"
 					>
-						"You designed for humans. Search engines read
-						<em>this</em>."
+						Yes, Googlebot renders JS. But quoting Google:
+						<em>"not all bots can run JavaScript."</em>
 					</p>
 
 					<aside class="notes">
-						You spend weeks perfecting your UI — beautiful layouts,
-						smooth animations. But to Google, your site is just a
-						pile of divs and spans. There's no way for a crawler to
-						know that this div is your business name, that list is
-						your FAQ, or that number is a product price. Schema
-						markup bridges that gap. It's the difference between
-						throwing a document at someone and handing them a
-						filled-out form.
+						Here's what Googlebot receives on the initial crawl of a
+						typical client-side rendered React app — an empty shell.
+						The content is in JavaScript. Important caveat: Google
+						does eventually render that JavaScript using a headless
+						Chromium. Bing does the same with Microsoft Edge. So
+						technically, Google and Bing can see your CSR content.
+						But Google itself says, and I quote from their
+						JavaScript SEO docs: "Server-side or pre-rendering is
+						still a great idea because it makes your website faster
+						for users and crawlers, and not all bots can run
+						JavaScript." That last clause is the interesting part.
+						Even Google acknowledges other crawlers don't render
+						JavaScript. We'll see who in a few slides.
 					</aside>
 				</section>
 
 				<!-- ==========================================
-           SLIDE 3: The Analogy — Name Tags at a Party
-           ========================================== -->
-				<section>
-					<h2>Schema = Name Tags<br />at a Party</h2>
-					<div class="accent-line"></div>
-
-					<div class="nametag-grid">
-						<div>
-							<div class="nametag-card anonymous">
-								<div class="icon">&#128100;</div>
-								<p>
-									No name. No role.<br />Search engines
-									<strong>guess</strong>.
-								</p>
-							</div>
-							<p class="nametag-label bad">
-								Without schema markup
-							</p>
-						</div>
-
-						<div class="fragment fade-up" data-fragment-index="1">
-							<div class="nametag-card identified">
-								<div class="badge">HELLO, I AM</div>
-								<div class="name">Acme Corp</div>
-								<div class="role">
-									Organization &bull; San Francisco &bull;
-									acme.com
-								</div>
-							</div>
-							<p class="nametag-label good">With schema markup</p>
-						</div>
-					</div>
-
-					<p
-						class="fragment fade-up"
-						data-fragment-index="1"
-						style="
-							text-align: center;
-							margin-top: 20px;
-							font-size: 0.6em;
-							color: var(--text-dim);
-						"
-					>
-						Structured data is how your website
-						<em>introduces itself</em> to machines.
-					</p>
-
-					<aside class="notes">
-						Simple analogy: imagine walking into a party with no
-						name tag. People have to guess who you are from context
-						— what you look like, who you're standing next to.
-						That's what Google does with your site without schema.
-						Now imagine wearing a name tag that says your name, your
-						role, your company. That's schema markup — you
-						explicitly declare what your content is, instead of
-						hoping Google figures it out.
-					</aside>
-				</section>
-
-				<!-- ==========================================
-           SLIDE 4: What is Schema Markup?
+           SLIDE 3: What is Schema Markup
            ========================================== -->
 				<section>
 					<h2>What is Schema Markup?</h2>
-					<div class="accent-line"></div>
-
-					<ul>
-						<li>
-							<strong>Shared vocabulary</strong> from Schema.org
-							&mdash; maintained by Google, Microsoft, Yahoo,
-							Yandex
-						</li>
-						<li>
-							Tells search engines
-							<em>what your content means</em>, not just what it
-							says
-						</li>
-						<li>
-							<strong>Three formats:</strong> JSON-LD, Microdata,
-							RDFa &mdash; <em>JSON-LD wins</em> (recommended by
-							Google)
-						</li>
-						<li class="fragment fade-up">
-							Just a
-							<code
-								>&lt;script type="application/ld+json"&gt;</code
-							>
-							tag &mdash; <strong>no HTML changes needed</strong>
-						</li>
-					</ul>
-
-					<aside class="notes">
-						Schema.org is the shared vocabulary — think of it as a
-						contract between you and search engines. JSON-LD won the
-						format war. Why do we love it? Because it sits in a
-						script tag in your head — completely separate from your
-						markup. No need to sprinkle data attributes across your
-						HTML like Microdata requires. As developers, we love
-						separation of concerns. JSON-LD is exactly that. Drop a
-						script tag, fill in the fields, done.
-					</aside>
-				</section>
-
-				<!-- ==========================================
-           SLIDE 5: Why Should You Care?
-           ========================================== -->
-				<section>
-					<h2>Why Should You Care?</h2>
 					<div class="accent-line"></div>
 
 					<div
 						style="
 							display: grid;
 							grid-template-columns: 1fr 1fr;
-							gap: 20px;
+							gap: 24px;
+							align-items: start;
 						"
 					>
-						<!-- Left: Bullet points -->
+						<!-- Left: Bullets -->
 						<div>
 							<ul>
 								<li>
-									<strong>Rich results</strong> &mdash;
-									ratings, FAQs, prices directly in search
+									Shared vocabulary from
+									<strong>Schema.org</strong> &mdash; founded
+									by Google, Microsoft, Yahoo, Yandex
 								</li>
 								<li>
-									<strong>AI search</strong> &mdash;
-									Perplexity, ChatGPT Search, Google AI
-									Overviews rely on structured data
+									Tells engines what your content
+									<em>means</em>, not just what it says
 								</li>
 								<li>
-									<strong>CTR boost</strong> &mdash; not a
-									direct ranking signal, but rich results get
-									more clicks
+									Format:
+									<strong>JSON-LD</strong> in a
+									<code>&lt;script&gt;</code> tag
+								</li>
+								<li>
+									<strong>No HTML changes</strong> &mdash;
+									sits separately from your markup
 								</li>
 							</ul>
 						</div>
 
-						<!-- Right: CSS mock comparison -->
-						<div class="fragment fade-up">
-							<div class="google-results">
-								<div>
-									<p class="result-label plain">
-										&#9744; Without schema
-									</p>
-									<div class="google-result">
-										<div class="result-url">
-											<div class="favicon">A</div>
-											acme.com
-										</div>
-										<div class="result-title">
-											Acme Corp - Building the Future
-										</div>
-										<div class="result-desc">
-											Acme Corp is a leading provider of
-											innovative widgets and solutions for
-											businesses worldwide.
-										</div>
-									</div>
-								</div>
-
-								<div>
-									<p class="result-label rich-label">
-										&#9745; With schema
-									</p>
-									<div class="google-result rich">
-										<div class="result-url">
-											<div class="favicon">A</div>
-											acme.com
-										</div>
-										<div class="result-title">
-											Acme Corp - Building the Future
-										</div>
-										<div class="stars">
-											<span class="star"
-												>&#9733;&#9733;&#9733;&#9733;&#9733;</span
-											>
-											<span class="rating"
-												>4.8 (2,340 reviews)</span
-											>
-										</div>
-										<div class="result-desc">
-											Acme Corp is a leading provider of
-											innovative widgets...
-										</div>
-										<div class="faq-item">
-											<span>What does Acme Corp do?</span>
-											<span class="arrow">&#9662;</span>
-										</div>
-										<div class="faq-item">
-											<span
-												>Where is Acme Corp
-												located?</span
-											>
-											<span class="arrow">&#9662;</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<aside class="notes">
-						Schema won't magically rank you number 1. But when two
-						results compete for the same spot, the one with stars,
-						prices, or FAQ dropdowns gets the click. Look at the
-						difference — same site, same content. The one with
-						schema takes up more space, looks more trustworthy,
-						shows more info. And with AI search growing fast —
-						Perplexity, ChatGPT Search, Google AI Overviews —
-						structured data is how AI systems extract facts about
-						your business. If you don't provide it, they guess. Or
-						worse, they skip you.
-					</aside>
-				</section>
-
-				<!-- ==========================================
-           SLIDE 6: JSON-LD Example — Organization
-           ========================================== -->
-				<section>
-					<h2>Your First Schema:<br />Organization</h2>
-
-					<pre><code data-trim data-noescape class="language-json">{
+						<!-- Right: Organization JSON-LD -->
+						<div>
+							<pre><code data-trim data-noescape class="language-json">{
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Acme Corp",
@@ -515,50 +332,46 @@
   "sameAs": [
     "https://twitter.com/acme",
     "https://linkedin.com/company/acme"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+1-800-555-0100",
-    "contactType": "customer service"
-  }
+  ]
 }</code></pre>
-
-					<div class="callout">
-						@context + @type are always required &mdash; every
-						schema starts here
-					</div>
-					<div class="callout">
-						sameAs links your social profiles &mdash; helps build
-						your Knowledge Graph entry
+							<div class="callout">
+								<code>@context</code> + <code>@type</code> are
+								required on every schema
+							</div>
+						</div>
 					</div>
 
 					<aside class="notes">
-						Walk through each field. @context tells the parser
-						"we're using Schema.org vocabulary." @type says "this is
-						an Organization." Every other field describes attributes
-						of that entity. The sameAs field is powerful — it links
-						your brand across platforms, helping Google build a
-						Knowledge Graph entry for you. contactPoint is nested —
-						it has its own @type, showing how schema represents
-						relationships. This is the simplest schema to add. Put
-						it on your homepage today — it takes 10 minutes.
+						Schema markup is a shared vocabulary maintained at
+						Schema.org — founded by Google, Microsoft, Yahoo, and
+						Yandex. You drop a small JSON block in a script tag, and
+						crawlers use it to understand your content. Two required
+						fields. @context tells the parser you're using
+						Schema.org vocabulary. @type declares what kind of thing
+						you're describing. That's the entire core concept. The
+						rest of the fields are properties of that entity.
+						JSON-LD is the format Google explicitly recommends. It
+						sits in a script tag, completely separate from your HTML
+						markup. No data attributes sprinkled across your DOM.
+						Clean separation.
 					</aside>
 				</section>
 
 				<!-- ==========================================
-           SLIDE 7: JSON-LD Example — FAQPage
+           SLIDE 4: FAQ Schema in Action
            ========================================== -->
 				<section style="padding: 32px 64px">
 					<h2 style="margin-bottom: 0.2em">
-						Highest-ROI Schema: FAQPage
+						Schema in Action: FAQPage
 					</h2>
+					<div class="accent-line"></div>
 
 					<div
 						style="
 							display: flex;
 							justify-content: space-between;
 							gap: 20px;
-							margin-top: 24px;
+							margin-top: 16px;
 						"
 					>
 						<div>
@@ -572,16 +385,18 @@
     "name": "What is schema markup?",
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Schema markup is structured
-        data you add to your website..."
+      "text": "Structured data that tells
+        search engines what your content
+        means..."
     }
   }]
 }</code></pre>
 							<div class="callout">
-								mainEntity is an array of Questions
+								<code>mainEntity</code> is an array of Questions
 							</div>
 							<div class="callout" style="color: var(--warning)">
-								acceptedAnswer must be an object, not a string!
+								<code>acceptedAnswer</code> must be an object,
+								not a string!
 							</div>
 						</div>
 
@@ -601,498 +416,1225 @@
 						</div>
 					</div>
 
+					<p
+						style="
+							text-align: center;
+							margin-top: 12px;
+							font-family: &quot;JetBrains Mono&quot;, monospace;
+							font-size: 0.55em;
+							color: var(--cyan);
+						"
+					>
+						This is what schema unlocks:
+						<em>free real estate in search results.</em>
+					</p>
+
 					<aside class="notes">
-						This is the highest-ROI schema you can add. If you have
-						any FAQ content on your site — and most sites do — this
-						is free real estate in search results. Google will show
-						expandable Q&A dropdowns right on the search page. Note
-						the nesting carefully: mainEntity is an array, each item
-						has @type Question, and acceptedAnswer must be an object
-						with @type Answer — not just a string. This is one of
-						the most common mistakes, and we'll see it on the next
-						slides.
+						Here's why this matters in practice. This is FAQPage
+						schema. Twelve lines of JSON. And this is what it
+						produces in Google — expandable Q&amp;A dropdowns right
+						inside the search result. Your result takes up more
+						visual space, shows more useful information at a glance,
+						gets more clicks. Two things to notice. mainEntity is an
+						array — you can have multiple questions. And
+						acceptedAnswer must be an object with @type Answer, not
+						a plain string. That's one of the most common bugs —
+						people put the answer as a string, validation fails, no
+						rich results. If you have any FAQ content on your site,
+						and most sites do, this is one of the highest-ROI
+						schemas you can add.
 					</aside>
 				</section>
 
 				<!-- ==========================================
-           SLIDE 8: Schema Types Quick Tour
+           SLIDE 5: Why Now — The AI Search Era
            ========================================== -->
 				<section>
-					<h2>Schema Types: The Ones<br />That Actually Matter</h2>
+					<h2>Why Now: The AI Search Era</h2>
 					<div class="accent-line"></div>
 
-					<div class="schema-grid">
-						<div class="schema-card">
-							<div class="card-icon">&#127970;</div>
-							<div class="card-name">Organization</div>
-							<div class="card-desc">
-								Brand identity & socials
+					<p
+						style="
+							font-size: 0.55em;
+							color: var(--text-dim);
+							margin-top: 6px;
+							margin-bottom: 18px;
+						"
+					>
+						AI search is real. So is the confusion about schema's
+						role in it.
+					</p>
+
+					<div
+						style="
+							display: grid;
+							grid-template-columns: 1fr 1fr;
+							gap: 18px;
+						"
+					>
+						<!-- LEFT: WHAT SCHEMA IS FOR -->
+						<div
+							style="
+								background: rgba(34, 197, 94, 0.08);
+								border: 1px solid rgba(34, 197, 94, 0.3);
+								border-radius: 10px;
+								padding: 20px;
+							"
+						>
+							<p
+								style="
+									font-size: 0.48em;
+									color: var(--success);
+									margin-bottom: 16px;
+									font-family:
+										&quot;JetBrains Mono&quot;, monospace;
+									text-transform: uppercase;
+									letter-spacing: 0.1em;
+								"
+							>
+								&#x2705;&nbsp;&nbsp;What schema IS for
+							</p>
+
+							<div style="margin-bottom: 14px">
+								<p style="font-size: 0.6em; margin-bottom: 4px">
+									<strong
+										>Rich results &mdash; 25+ types</strong
+									>
+								</p>
+								<p
+									style="
+										font-size: 0.5em;
+										color: var(--text-dim);
+										margin: 0;
+									"
+								>
+									Visual enhancements in search results
+									&mdash; star ratings, FAQ accordions, recipe
+									cards with cook times, price snippets, and
+									breadcrumb paths. Each type has dedicated
+									Google docs.
+								</p>
+							</div>
+
+							<div style="margin-bottom: 14px">
+								<p style="font-size: 0.6em; margin-bottom: 4px">
+									<strong>Knowledge Graph entries</strong>
+								</p>
+								<p
+									style="
+										font-size: 0.5em;
+										color: var(--text-dim);
+										margin: 0;
+									"
+								>
+									The brand info panel on Google's right rail
+									&mdash; name, logo, headquarters, social
+									profiles, key people. Built from
+									Organization + sameAs schema.
+								</p>
+							</div>
+
+							<div>
+								<p style="font-size: 0.6em; margin-bottom: 4px">
+									<strong>Content classification</strong>
+								</p>
+								<p
+									style="
+										font-size: 0.5em;
+										color: var(--text-dim);
+										margin: 0;
+									"
+								>
+									Telling engines whether a page is an
+									article, a product, an event, or a recipe
+									&mdash; so it surfaces in the right search
+									contexts.
+								</p>
+							</div>
+
+							<p
+								style="
+									font-size: 0.4em;
+									color: var(--text-muted);
+									margin-top: 18px;
+									font-family:
+										&quot;JetBrains Mono&quot;, monospace;
+								"
+							>
+								All verified at
+								developers.google.com/search/docs
+							</p>
+						</div>
+
+						<!-- RIGHT: WHAT SCHEMA IS NOT FOR -->
+						<div
+							style="
+								background: rgba(239, 68, 68, 0.06);
+								border: 1px solid rgba(239, 68, 68, 0.3);
+								border-radius: 10px;
+								padding: 20px;
+							"
+						>
+							<p
+								style="
+									font-size: 0.48em;
+									color: #ef4444;
+									margin-bottom: 16px;
+									font-family:
+										&quot;JetBrains Mono&quot;, monospace;
+									text-transform: uppercase;
+									letter-spacing: 0.1em;
+								"
+							>
+								&#x274C;&nbsp;&nbsp;What schema is NOT for
+							</p>
+
+							<div style="margin-bottom: 14px">
+								<p style="font-size: 0.6em; margin-bottom: 4px">
+									<strong>A ranking factor</strong>
+								</p>
+								<p
+									style="
+										font-size: 0.48em;
+										color: var(--text-dim);
+										margin: 0;
+										font-style: italic;
+									"
+								>
+									"loss of rich result eligibility without
+									affecting web search rankings"
+								</p>
+								<p
+									style="
+										font-size: 0.38em;
+										color: var(--text-muted);
+										margin-top: 2px;
+										font-family:
+											&quot;JetBrains Mono&quot;,
+											monospace;
+									"
+								>
+									&mdash; google.com/.../sd-policies
+								</p>
+							</div>
+
+							<div style="margin-bottom: 14px">
+								<p style="font-size: 0.6em; margin-bottom: 4px">
+									<strong>Required for AI Overviews</strong>
+								</p>
+								<p
+									style="
+										font-size: 0.48em;
+										color: var(--text-dim);
+										margin: 0;
+										font-style: italic;
+									"
+								>
+									"no special schema.org structured data that
+									you need to add"
+								</p>
+								<p
+									style="
+										font-size: 0.38em;
+										color: var(--text-muted);
+										margin-top: 2px;
+										font-family:
+											&quot;JetBrains Mono&quot;,
+											monospace;
+									"
+								>
+									&mdash; google.com/.../ai-features
+								</p>
+							</div>
+
+							<div>
+								<p style="font-size: 0.6em; margin-bottom: 6px">
+									<strong
+										>Guaranteed AI search visibility</strong
+									>
+								</p>
+								<p
+									style="
+										font-size: 0.45em;
+										color: var(--text-dim);
+										margin: 0;
+										line-height: 1.6;
+									"
+								>
+									<span style="color: var(--text-muted)"
+										>&middot;</span
+									>
+									Google AI Overviews + Bing Copilot &mdash;
+									use schema, not required<br />
+									<span style="color: var(--text-muted)"
+										>&middot;</span
+									>
+									Perplexity + ChatGPT Search &mdash; no
+									public confirmation<br />
+									<span style="color: var(--text-muted)"
+										>&middot;</span
+									>
+									"Critical for AI search" &mdash; overstated
+								</p>
 							</div>
 						</div>
-						<div class="schema-card">
-							<div class="card-icon">&#128722;</div>
-							<div class="card-name">Product</div>
-							<div class="card-desc">
-								Prices, ratings, availability
-							</div>
+					</div>
+
+					<aside class="notes">
+						Why does this matter now? AI search is real. Perplexity,
+						ChatGPT Search, Google AI Overviews are changing how
+						people discover content. But there's also a lot of
+						confusion about what schema markup actually does in this
+						new era. Let me give you the short version. What is
+						schema for? Three things, all verifiable from Google's
+						docs. Rich results &mdash; twenty-five-plus types like
+						stars, FAQ dropdowns, recipe cards. Knowledge Graph
+						entries &mdash; the brand info panels you see in Google.
+						And content classification &mdash; helping engines
+						understand what your content means. What is schema NOT
+						for? Three things, each one counterintuitive. It's not a
+						ranking factor. Google has said this for years. It's not
+						required for AI Overviews. Google literally says, quote,
+						no special schema.org structured data that you need to
+						add. And the AI search visibility claim you'll see all
+						over SEO blogs? That's not in Google's official
+						documentation. So if you're going to add schema, do it
+						for the verified benefits. Don't oversell it to your
+						team for AI search citations.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 6: The Real Question
+           ========================================== -->
+				<section>
+					<div
+						style="
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							align-items: center;
+							height: 100%;
+							text-align: center;
+						"
+					>
+						<h2 style="font-size: 1.3em; margin-bottom: 0.3em">
+							Schema markup only counts<br />if crawlers can see
+							it.
+						</h2>
+						<div
+							class="accent-line"
+							style="margin: 24px auto"
+						></div>
+						<p
+							style="
+								font-size: 0.8em;
+								color: var(--cyan);
+								font-family:
+									&quot;JetBrains Mono&quot;, monospace;
+								margin-top: 20px;
+							"
+						>
+							Which rendering strategy delivers it most reliably?
+						</p>
+					</div>
+
+					<aside class="notes">
+						Here's the real question for React developers. Schema
+						markup only counts if crawlers can actually read it. So
+						the question isn't whether to use schema — it's which
+						rendering strategy delivers it most reliably. Let's look
+						at the options.
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 7: Rendering × Crawler Matrix
+           ========================================== -->
+				<section style="padding: 32px 48px">
+					<h2 style="margin-bottom: 0.2em">Who Can See What</h2>
+					<div class="accent-line"></div>
+
+					<table
+						style="
+							width: 100%;
+							margin-top: 18px;
+							border-collapse: collapse;
+							font-size: 0.55em;
+						"
+					>
+						<thead>
+							<tr style="background: rgba(0, 229, 255, 0.08)">
+								<th
+									style="
+										padding: 12px 14px;
+										text-align: left;
+										border-bottom: 2px solid
+											rgba(0, 229, 255, 0.3);
+										color: var(--cyan);
+										font-family:
+											&quot;JetBrains Mono&quot;,
+											monospace;
+										font-size: 0.85em;
+									"
+								>
+									Crawler
+								</th>
+								<th
+									style="
+										padding: 12px 14px;
+										text-align: center;
+										border-bottom: 2px solid
+											rgba(0, 229, 255, 0.3);
+										color: var(--cyan);
+										font-family:
+											&quot;JetBrains Mono&quot;,
+											monospace;
+										font-size: 0.85em;
+									"
+								>
+									CSR / SPA
+								</th>
+								<th
+									style="
+										padding: 12px 14px;
+										text-align: center;
+										border-bottom: 2px solid
+											rgba(0, 229, 255, 0.3);
+										color: var(--cyan);
+										font-family:
+											&quot;JetBrains Mono&quot;,
+											monospace;
+										font-size: 0.85em;
+									"
+								>
+									SSR / SSG / RSC
+								</th>
+								<th
+									style="
+										padding: 12px 14px;
+										text-align: center;
+										border-bottom: 2px solid
+											rgba(0, 229, 255, 0.3);
+										color: var(--cyan);
+										font-family:
+											&quot;JetBrains Mono&quot;,
+											monospace;
+										font-size: 0.85em;
+									"
+								>
+									Executes JS?
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								style="
+									border-bottom: 1px solid
+										rgba(255, 255, 255, 0.06);
+								"
+							>
+								<td style="padding: 14px; font-weight: 600">
+									Googlebot
+								</td>
+								<td
+									style="
+										padding: 14px;
+										text-align: center;
+										color: var(--warning);
+									"
+								>
+									Eventually (queued)
+								</td>
+								<td
+									style="
+										padding: 14px;
+										text-align: center;
+										color: var(--success);
+									"
+								>
+									Immediately
+								</td>
+								<td style="padding: 14px; text-align: center">
+									Yes, documented
+								</td>
+							</tr>
+							<tr
+								style="
+									border-bottom: 1px solid
+										rgba(255, 255, 255, 0.06);
+								"
+							>
+								<td style="padding: 14px; font-weight: 600">
+									Bingbot
+								</td>
+								<td
+									style="
+										padding: 14px;
+										text-align: center;
+										color: var(--warning);
+									"
+								>
+									Eventually
+								</td>
+								<td
+									style="
+										padding: 14px;
+										text-align: center;
+										color: var(--success);
+									"
+								>
+									Immediately
+								</td>
+								<td style="padding: 14px; text-align: center">
+									Yes (Edge engine)
+								</td>
+							</tr>
+							<tr
+								style="
+									border-bottom: 1px solid
+										rgba(255, 255, 255, 0.06);
+								"
+							>
+								<td style="padding: 14px; font-weight: 600">
+									GPTBot &middot; OAI-SearchBot
+								</td>
+								<td
+									style="
+										padding: 14px;
+										text-align: center;
+										color: var(--text-muted);
+									"
+								>
+									Not documented
+								</td>
+								<td
+									style="
+										padding: 14px;
+										text-align: center;
+										color: var(--success);
+									"
+								>
+									Immediately
+								</td>
+								<td
+									style="
+										padding: 14px;
+										text-align: center;
+										color: var(--text-muted);
+									"
+								>
+									Not documented
+								</td>
+							</tr>
+							<tr>
+								<td style="padding: 14px; font-weight: 600">
+									PerplexityBot
+								</td>
+								<td
+									style="
+										padding: 14px;
+										text-align: center;
+										color: var(--text-muted);
+									"
+								>
+									Not documented
+								</td>
+								<td
+									style="
+										padding: 14px;
+										text-align: center;
+										color: var(--success);
+									"
+								>
+									Immediately
+								</td>
+								<td
+									style="
+										padding: 14px;
+										text-align: center;
+										color: var(--text-muted);
+									"
+								>
+									Not documented
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<p
+						style="
+							text-align: center;
+							margin-top: 14px;
+							font-family: &quot;JetBrains Mono&quot;, monospace;
+							font-size: 0.5em;
+							color: var(--text-muted);
+						"
+					>
+						Googlebot rendering: crawl &rarr; render &rarr; index.
+						"Rendering happens when resources allow."
+					</p>
+
+					<div
+						style="
+							display: grid;
+							grid-template-columns: 1fr 1fr;
+							gap: 16px;
+							margin-top: 20px;
+						"
+					>
+						<div
+							style="
+								background: rgba(34, 197, 94, 0.08);
+								border: 1px solid rgba(34, 197, 94, 0.3);
+								border-radius: 10px;
+								padding: 14px 18px;
+							"
+						>
+							<p
+								style="
+									font-size: 0.55em;
+									color: var(--success);
+									margin: 0 0 4px 0;
+									font-weight: 600;
+								"
+							>
+								&#x2705;&nbsp;&nbsp;Google + Bing only?
+							</p>
+							<p
+								style="
+									font-size: 0.5em;
+									color: var(--text-dim);
+									margin: 0;
+								"
+							>
+								Any rendering works (CSR with delay)
+							</p>
 						</div>
-						<div class="schema-card">
-							<div class="card-icon">&#10067;</div>
-							<div class="card-name">FAQPage</div>
-							<div class="card-desc">
-								Expandable Q&A in search
-							</div>
+
+						<div
+							style="
+								background: rgba(245, 158, 11, 0.08);
+								border: 1px solid rgba(245, 158, 11, 0.3);
+								border-radius: 10px;
+								padding: 14px 18px;
+							"
+						>
+							<p
+								style="
+									font-size: 0.55em;
+									color: var(--warning);
+									margin: 0 0 4px 0;
+									font-weight: 600;
+								"
+							>
+								&#x26A0;&nbsp;&nbsp;Need AI / non-JS crawlers?
+							</p>
+							<p
+								style="
+									font-size: 0.5em;
+									color: var(--text-dim);
+									margin: 0;
+								"
+							>
+								Server-render &mdash; the only reliable path
+							</p>
 						</div>
-						<div class="schema-card">
-							<div class="card-icon">&#128205;</div>
-							<div class="card-name">LocalBusiness</div>
-							<div class="card-desc">Address, hours, phone</div>
+					</div>
+
+					<aside class="notes">
+						Here's what's actually documented. Googlebot renders
+						JavaScript using headless Chromium — but through a
+						queued process. Crawl, then render when resources allow,
+						then index. So your CSR app gets indexed eventually,
+						just not on first pass. Bingbot is evergreen — uses the
+						latest Microsoft Edge engine. They also render
+						JavaScript. GPTBot — OpenAI's crawler — their official
+						docs don't specify JavaScript rendering at all. Same for
+						Perplexity. They publish user-agent strings and IP
+						ranges, but they don't document JS support. Industry
+						testing consistently suggests they don't execute JS, but
+						officially it's not documented either way. For
+						server-rendered output, everybody sees the schema
+						immediately. No ambiguity. So the question becomes:
+						which crawlers are you optimizing for?
+					</aside>
+				</section>
+
+				<!-- ==========================================
+           SLIDE 8: Your Options, Ranked by Reliability
+           ========================================== -->
+				<section style="padding: 32px 48px">
+					<h2 style="margin-bottom: 0.2em">
+						Your Options, Ranked by Reliability
+					</h2>
+					<div class="accent-line"></div>
+
+					<div
+						style="
+							display: grid;
+							grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+							gap: 18px;
+							margin-top: 14px;
+						"
+					>
+						<!-- Option 1: Server-rendered -->
+						<div style="min-width: 0; overflow: hidden">
+							<p
+								style="
+									font-size: 0.5em;
+									color: var(--success);
+									margin-bottom: 8px;
+									font-family:
+										&quot;JetBrains Mono&quot;, monospace;
+									text-transform: uppercase;
+									letter-spacing: 0.1em;
+								"
+							>
+								Option 1 &mdash; Server-rendered (best)
+							</p>
+							<pre
+								style="
+									font-size: 0.4em;
+									margin-top: 0;
+									max-width: 100%;
+									overflow: hidden;
+								"
+							><code data-trim data-noescape class="language-jsx">// Server Component (Next.js App Router)
+export default async function Page() {
+  const product = await getProduct()
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+  }
+
+  const html = JSON.stringify(jsonLd).replace(/&lt;/g, '\\u003c')
+
+  return (
+    &lt;script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: html }}
+    /&gt;
+  )
+}</code></pre>
+							<p
+								style="
+									font-size: 0.5em;
+									color: var(--text-dim);
+									margin-top: 8px;
+								"
+							>
+								Reaches:
+								<span style="color: var(--success)"
+									>Every crawler immediately</span
+								>
+							</p>
 						</div>
-						<div class="schema-card">
-							<div class="card-icon">&#128240;</div>
-							<div class="card-name">Article</div>
-							<div class="card-desc">Author, date, headline</div>
-						</div>
-						<div class="schema-card">
-							<div class="card-icon">&#127915;</div>
-							<div class="card-name">Event</div>
-							<div class="card-desc">Date, location, tickets</div>
-						</div>
-						<div class="schema-card">
-							<div class="card-icon">&#128279;</div>
-							<div class="card-name">Breadcrumb</div>
-							<div class="card-desc">
-								Navigation path in results
-							</div>
-						</div>
-						<div class="schema-card">
-							<div class="card-icon">&#128221;</div>
-							<div class="card-name">HowTo</div>
-							<div class="card-desc">
-								Step-by-step instructions
-							</div>
+
+						<!-- Option 2: JS-injected -->
+						<div style="min-width: 0; overflow: hidden">
+							<p
+								style="
+									font-size: 0.5em;
+									color: var(--warning);
+									margin-bottom: 8px;
+									font-family:
+										&quot;JetBrains Mono&quot;, monospace;
+									text-transform: uppercase;
+									letter-spacing: 0.1em;
+								"
+							>
+								Option 2 &mdash; JS-injected (CSR-compatible)
+							</p>
+							<pre
+								style="
+									font-size: 0.4em;
+									margin-top: 0;
+									max-width: 100%;
+									overflow: hidden;
+								"
+							><code data-trim data-noescape class="language-jsx">'use client'
+import { Helmet } from 'react-helmet-async'
+import { useEffect, useState } from 'react'
+
+export default function ProductSchema() {
+  const [product, setProduct] = useState(null)
+
+  useEffect(() =&gt; {
+    fetch('/api/product')
+      .then(r =&gt; r.json())
+      .then(setProduct)
+  }, [])
+
+  if (!product) return null
+
+  return (
+    &lt;Helmet&gt;
+      &lt;script type="application/ld+json"&gt;
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Product',
+          name: product.name,
+        })}
+      &lt;/script&gt;
+    &lt;/Helmet&gt;
+  )
+}</code></pre>
+							<p
+								style="
+									font-size: 0.5em;
+									color: var(--text-dim);
+									margin-top: 8px;
+								"
+							>
+								Reaches:
+								<span style="color: var(--warning)"
+									>Googlebot, Bingbot</span
+								>
+								&middot;
+								<span style="color: var(--text-muted)"
+									>GPTBot, PerplexityBot: not documented</span
+								>
+							</p>
 						</div>
 					</div>
 
 					<p
 						style="
 							text-align: center;
-							margin-top: 16px;
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 0.52em;
-							color: var(--text-muted);
+							margin-top: 18px;
+							font-size: 0.5em;
+							color: var(--text-dim);
+							font-style: italic;
+							line-height: 1.4;
 						"
 					>
-						Schema.org has 800+ types. These ~10 cover 90% of
-						real-world use cases.
+						Google docs: "Google Search can understand and process
+						structured data that's available in the DOM when it
+						renders the page."
 					</p>
 
 					<aside class="notes">
-						Don't go deep on each one — just show breadth. The point
-						is: whatever content you're building, there's probably a
-						schema type for it. Product for e-commerce.
-						LocalBusiness for any brick-and-mortar. Article for
-						blogs and news sites. BreadcrumbList is underrated —
-						it's easy to add and improves how your site appears in
-						search results. You don't need to memorize these.
-						Schema.org is your reference. Just know they exist.
+						Here's the thing most React developers don't know. You
+						have options. Option one, the best one: server-render
+						your schema. Drop a native script tag inside a Server
+						Component in Next.js App Router. The Next.js docs
+						explicitly recommend this pattern. Every crawler sees it
+						immediately. Two important details: use a native script
+						tag, not the next/script component — that's for
+						executable JavaScript. And replace less-than signs with
+						the unicode equivalent to prevent XSS, because
+						JSON.stringify doesn't sanitize. Option two — the one
+						nobody talks about: Google explicitly documents how to
+						inject JSON-LD via JavaScript on the client. They have a
+						fetch-based code example on their docs page. Their
+						quote: "Google Search can understand and process
+						structured data that's available in the DOM when it
+						renders the page." So if you're stuck in a CSR codebase
+						you can't easily migrate, JS injection is a documented
+						option. Caveats: Google warns it's less reliable for
+						fast-changing data, and GPTBot and Perplexity probably
+						won't see it. But for Google and Bing, it works.
 					</aside>
 				</section>
 
 				<!-- ==========================================
-           SLIDE 9: Spot the Bug — Incorrect vs Correct
+           SLIDE 9: Rendering Pitfalls
            ========================================== -->
-				<section>
-					<h2>Spot the Bug</h2>
+				<section style="padding: 32px 48px">
+					<h2 style="margin-bottom: 0.2em">Rendering Pitfalls</h2>
 					<div class="accent-line"></div>
 
-					<div class="comparison">
-						<div class="comparison-panel wrong">
-							<div class="panel-header">&#10060; Wrong</div>
-							<pre><code data-trim data-noescape class="language-json">{
-  <span class="json-error">"@type": "FAQPage",</span>
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is schema?",
-      <span class="json-error">"acceptedAnswer": "Schema is
-        structured data that..."</span>
-    }
-  ]
-}</code></pre>
-						</div>
+					<p
+						style="
+							font-size: 0.55em;
+							color: var(--text-dim);
+							margin-top: 6px;
+							margin-bottom: 12px;
+						"
+					>
+						Even with the right rendering strategy, these embedding
+						mistakes still ship in production.
+					</p>
 
-						<div
-							class="comparison-panel correct fragment fade-up"
-							data-fragment-index="2"
+					<table
+						style="
+							width: 100%;
+							margin-top: 8px;
+							border-collapse: collapse;
+							font-size: 0.5em;
+						"
+					>
+						<thead>
+							<tr style="background: rgba(0, 229, 255, 0.08)">
+								<th
+									style="
+										padding: 12px 14px;
+										text-align: left;
+										border-bottom: 2px solid
+											rgba(0, 229, 255, 0.3);
+										color: var(--cyan);
+										font-family:
+											&quot;JetBrains Mono&quot;,
+											monospace;
+										font-size: 0.85em;
+										width: 45%;
+									"
+								>
+									The mistake
+								</th>
+								<th
+									style="
+										padding: 12px 14px;
+										text-align: left;
+										border-bottom: 2px solid
+											rgba(0, 229, 255, 0.3);
+										color: var(--cyan);
+										font-family:
+											&quot;JetBrains Mono&quot;,
+											monospace;
+										font-size: 0.85em;
+									"
+								>
+									Why it breaks (per docs)
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								style="
+									border-bottom: 1px solid
+										rgba(255, 255, 255, 0.06);
+								"
+							>
+								<td style="padding: 14px; vertical-align: top">
+									<strong
+										>Using <code>next/script</code> for
+										JSON-LD</strong
+									><br />
+									<span
+										style="
+											color: var(--text-dim);
+											font-size: 0.85em;
+										"
+									>
+										Common reflex in Next.js apps
+									</span>
+								</td>
+								<td
+									style="
+										padding: 14px;
+										vertical-align: top;
+										color: var(--text-dim);
+									"
+								>
+									Next.js docs: <code>next/script</code> is
+									for executable JS. JSON-LD needs a native
+									<code>&lt;script&gt;</code> tag.
+								</td>
+							</tr>
+							<tr
+								style="
+									border-bottom: 1px solid
+										rgba(255, 255, 255, 0.06);
+								"
+							>
+								<td style="padding: 14px; vertical-align: top">
+									<strong
+										>Not escaping <code>&lt;</code> in
+										<code>JSON.stringify</code></strong
+									><br />
+									<span
+										style="
+											color: var(--text-dim);
+											font-size: 0.85em;
+										"
+									>
+										XSS vector hiding in plain sight
+									</span>
+								</td>
+								<td
+									style="
+										padding: 14px;
+										vertical-align: top;
+										color: var(--text-dim);
+									"
+								>
+									<code>JSON.stringify</code> doesn't
+									sanitize. Next.js docs require replacing
+									<code>&lt;</code> with
+									<code>&#92;u003c</code>.
+								</td>
+							</tr>
+							<tr
+								style="
+									border-bottom: 1px solid
+										rgba(255, 255, 255, 0.06);
+								"
+							>
+								<td style="padding: 14px; vertical-align: top">
+									<strong>SSG with dynamic data</strong><br />
+									<span
+										style="
+											color: var(--text-dim);
+											font-size: 0.85em;
+										"
+									>
+										Prices, inventory, FAQs
+									</span>
+								</td>
+								<td
+									style="
+										padding: 14px;
+										vertical-align: top;
+										color: var(--text-dim);
+									"
+								>
+									Schema frozen at build time drifts from
+									visible content. Google flags mismatches as
+									misleading.
+								</td>
+							</tr>
+							<tr>
+								<td style="padding: 14px; vertical-align: top">
+									<strong
+										>Schema that reads cookies /
+										storage</strong
+									><br />
+									<span
+										style="
+											color: var(--text-dim);
+											font-size: 0.85em;
+										"
+									>
+										User-specific or A/B-variant content
+									</span>
+								</td>
+								<td
+									style="
+										padding: 14px;
+										vertical-align: top;
+										color: var(--text-dim);
+									"
+								>
+									Google: "WRS does not retain state across
+									page loads." Cookies, localStorage, session
+									cleared between renders.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div
+						style="
+							background: rgba(34, 197, 94, 0.08);
+							border: 1px solid rgba(34, 197, 94, 0.3);
+							border-radius: 10px;
+							padding: 14px 20px;
+							margin-top: 18px;
+						"
+					>
+						<p
+							style="
+								font-size: 0.5em;
+								color: var(--success);
+								margin: 0 0 6px 0;
+								font-family:
+									&quot;JetBrains Mono&quot;, monospace;
+								text-transform: uppercase;
+								letter-spacing: 0.1em;
+							"
 						>
-							<div class="panel-header">&#9989; Correct</div>
-							<pre><code data-trim data-noescape class="language-json">{
-  <span style="color: var(--success);">"@context": "https://schema.org",</span>
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is schema?",
-      "acceptedAnswer": {
-        <span style="color: var(--success);">"@type": "Answer",</span>
-        <span style="color: var(--success);">"text": "Schema is structured
-          data that..."</span>
-      }
-    }
-  ]
-}</code></pre>
-						</div>
+							&#x2705;&nbsp;&nbsp;The fix
+						</p>
+						<p
+							style="
+								font-size: 0.55em;
+								color: var(--text);
+								margin: 0;
+								line-height: 1.5;
+							"
+						>
+							Keep schema in Server Components &middot; fetch data
+							server-side &middot; escape
+							<code>&lt;</code> to <code>&#92;u003c</code>
+							&middot; revalidate often if using SSG
+						</p>
 					</div>
 
-					<div class="bug-list">
-						<div
-							class="bug-item fragment fade-up"
-							data-fragment-index="1"
-						>
-							<div class="bug-num">1</div>
-							Missing <code>@context</code> &mdash; parser doesn't
-							know you're using Schema.org
-						</div>
-						<div
-							class="bug-item fragment fade-up"
-							data-fragment-index="1"
-						>
-							<div class="bug-num">2</div>
-							<code>acceptedAnswer</code> is a string &mdash; must
-							be an <code>Answer</code> object
-						</div>
-						<div
-							class="bug-item fragment fade-up"
-							data-fragment-index="1"
-						>
-							<div class="bug-num">3</div>
-							Missing <code>@type: "Answer"</code> on the nested
-							object
-						</div>
-					</div>
+					<p
+						style="
+							text-align: center;
+							margin-top: 12px;
+							font-family: &quot;JetBrains Mono&quot;, monospace;
+							font-size: 0.4em;
+							color: var(--text-muted);
+						"
+					>
+						Sources: nextjs.org/docs/app/guides/json-ld &middot;
+						google.com/search/docs/.../generate-structured-data-with-javascript
+						&middot;
+						google.com/search/docs/.../fix-search-javascript
+					</p>
 
 					<aside class="notes">
-						This is the slide where everyone gets uncomfortable. The
-						version on the left looks totally reasonable — it's
-						valid JSON, it has the right field names. But it fails
-						schema validation in three ways. First: no @context.
-						Without it, the parser doesn't know you're using
-						Schema.org vocabulary. Second: acceptedAnswer is a plain
-						string instead of an Answer object. Third: even if you
-						wrap it in an object, you need @type Answer. These are
-						the three most common schema bugs I see. They all pass a
-						JSON linter but fail schema validation. That's the trap.
+						You've picked the right rendering strategy &mdash;
+						server-render. Great. There are still four mistakes that
+						ship in production all the time. One: using next/script
+						for JSON-LD. Common reflex if you're trained on Next.js
+						patterns. But next/script is built for executable
+						JavaScript &mdash; it loads, runs, manages dependencies.
+						JSON-LD is just data. You want a native script tag.
+						Next.js docs are explicit about this. Two: not escaping
+						less-than signs when you JSON.stringify your schema.
+						JSON.stringify does not sanitize HTML. If your schema
+						content contains a less-than sign &mdash; say, in a
+						description with comparison operators &mdash; you've
+						shipped an XSS vector. Next.js docs require you to
+						replace less-than with backslash-u-003c. Three: SSG with
+						dynamic data. If you use Gatsby, Astro, or Next.js
+						static export to bake your pages at build time, your
+						schema is frozen. Prices change, inventory runs out,
+						FAQs get updated &mdash; but your schema still says what
+						it said at build time. Google treats this mismatch as
+						misleading content and can issue a manual action. Four:
+						schema that reads cookies, localStorage, or session
+						storage. User-specific schema, A/B test variants,
+						anything personalized. Google's Web Rendering Service
+						explicitly does not retain state across page loads. So
+						your schema reads an empty cookie, renders wrong, and
+						gets indexed wrong. The pattern: keep schema in Server
+						Components, fetch data server-side, escape your output,
+						and revalidate frequently if you use SSG.
 					</aside>
 				</section>
 
 				<!-- ==========================================
-           SLIDE 10: Real-World Pitfalls
+           SLIDE 10: Takeaways
            ========================================== -->
-				<section>
-					<h2>Things That Will<br />Bite You</h2>
-					<div class="accent-line"></div>
-
-					<ul>
-						<li>
-							<strong>Validation &#8800; rich results</strong>
-							&mdash; Google decides eligibility separately;
-							passing validation is necessary but not sufficient
-						</li>
-						<li>
-							<strong>SPAs & client-side rendering</strong>
-							&mdash; Googlebot may not execute your JS; use SSR,
-							SSG, or prerendering for schema
-						</li>
-						<li>
-							<strong>Schema drift</strong> &mdash; content
-							changes but schema stays stale (wrong prices,
-							outdated FAQs, closed locations)
-						</li>
-						<li>
-							<strong>Duplicate schemas</strong> &mdash; multiple
-							conflicting schema blocks on one page confuse
-							parsers
-						</li>
-						<li>
-							<strong>No good all-in-one validator</strong>
-							&mdash; I forked Adobe's
-							<code>structured-data-validator</code> to support
-							140+ types with automatic subtype inheritance
-						</li>
-					</ul>
-
-					<aside class="notes">
-						These are things I hit firsthand while building the
-						schema builder at HighLevel. The biggest surprise:
-						validation passing doesn't mean Google shows rich
-						results — they have their own eligibility criteria
-						beyond structural correctness. The SPA issue is critical
-						for this audience — if your React or Vue app is
-						client-side rendered, Googlebot might not see your
-						schema at all. Use SSR or SSG. Schema drift is insidious
-						— someone updates a product price on the page but nobody
-						updates the schema. Now you've got mismatched data, and
-						Google can penalize you for that. And when I was
-						building support for 140+ types, no single validator
-						handled them all. Adobe's structured-data-validator was
-						the closest, but it didn't support automatic subtype
-						inheritance — like knowing that Restaurant inherits all
-						the required fields from LocalBusiness. So I forked it
-						and added that. The link is on the resources slide.
-					</aside>
-				</section>
-
-				<!-- ==========================================
-           SLIDE 11: Validation Workflow
-           ========================================== -->
-				<section>
-					<h2>Validate Before You Ship</h2>
+				<section style="padding: 40px 48px">
+					<h2 style="margin-bottom: 0.2em">Takeaways</h2>
 					<div class="accent-line"></div>
 
 					<div
 						style="
 							display: grid;
-							grid-template-columns: 1.1fr 0.9fr;
-							gap: 24px;
+							grid-template-columns: 1fr 480px;
+							gap: 32px;
+							align-items: center;
+							margin-top: 20px;
 						"
 					>
 						<div>
-							<div class="step-flow">
-								<div class="step">
-									<div class="step-num">1</div>
-									<div class="step-content">
-										<div class="step-title">
-											Write your JSON-LD
-										</div>
-										<div class="step-desc">
-											Add the script tag to your page's
-											&lt;head&gt;
-										</div>
+							<ol style="line-height: 1.4">
+								<li style="margin-bottom: 12px">
+									<div>
+										<h3
+											style="
+												font-size: 0.7em;
+												margin: 0 0 6px 0;
+												text-transform: none;
+											"
+										>
+											Schema unlocks rich results and
+											Knowledge Graph
+										</h3>
+										<p
+											style="
+												font-size: 0.55em;
+												color: var(--text-dim);
+												margin: 0;
+											"
+										>
+											Verified by Google. The AI search
+											angle is mostly hype.
+										</p>
 									</div>
-								</div>
-								<div class="step-connector"></div>
-
-								<div class="step">
-									<div class="step-num">2</div>
-									<div class="step-content">
-										<div class="step-title">
-											Google Rich Results Test
-										</div>
-										<div class="step-desc">
-											Tests if your markup qualifies for
-											rich result features
-										</div>
+								</li>
+								<li style="margin-bottom: 12px">
+									<div>
+										<h3
+											style="
+												font-size: 0.7em;
+												margin: 0 0 6px 0;
+												text-transform: none;
+											"
+										>
+											Not a ranking factor &middot; not
+											required for AI Overviews
+										</h3>
+										<p
+											style="
+												font-size: 0.55em;
+												color: var(--text-dim);
+												margin: 0;
+											"
+										>
+											Google says this explicitly. Don't
+											oversell it.
+										</p>
 									</div>
-								</div>
-								<div class="step-connector"></div>
-
-								<div class="step">
-									<div class="step-num">3</div>
-									<div class="step-content">
-										<div class="step-title">
-											Schema Markup Validator
-										</div>
-										<div class="step-desc">
-											Tests structural correctness against
-											the Schema.org spec
-										</div>
+								</li>
+								<li>
+									<div>
+										<h3
+											style="
+												font-size: 0.7em;
+												margin: 0 0 6px 0;
+												text-transform: none;
+											"
+										>
+											Pick rendering based on which
+											crawlers you need
+										</h3>
+										<p
+											style="
+												font-size: 0.55em;
+												color: var(--text-dim);
+												margin: 0;
+											"
+										>
+											Google &amp; Bing: any rendering
+											works (CSR via JS injection is
+											documented). Everything else:
+											server-render.
+										</p>
 									</div>
-								</div>
-								<div class="step-connector"></div>
+								</li>
+							</ol>
 
-								<div class="step">
-									<div class="step-num">4</div>
-									<div class="step-content">
-										<div class="step-title">
-											Google Search Console
-										</div>
-										<div class="step-desc">
-											Monitor for errors and warnings
-											after deployment
-										</div>
-									</div>
-								</div>
-								<div class="step-connector"></div>
-
-								<div class="step bonus">
-									<div class="step-num">+</div>
-									<div class="step-content">
-										<div class="step-title">
-											CI/CD Validation
-										</div>
-										<div class="step-desc">
-											<code
-												>structured-data-validator</code
-											>
-											for automated checks in your
-											pipeline
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="fragment fade-up">
-							<!-- Screenshot for Rich Results Test -->
 							<div
-								class="screenshot-slot"
-								style="margin-top: 16px"
-							>
-								<img
-									src="assets/images/rich-results-test.png"
-									alt="Google Rich Results Test output"
-								/>
-							</div>
-
-							<div class="demo-box" style="margin-top: 16px">
-								&#9654; DEMO TIME
-							</div>
-						</div>
-					</div>
-
-					<aside class="notes">
-						Always validate before shipping. I've seen valid JSON
-						that was completely wrong as schema. Use two tools: the
-						Rich Results Test tells you if Google will show rich
-						results from your markup. The Schema.org validator
-						checks structural correctness — does your schema follow
-						the spec? Use both, they catch different things. After
-						deployment, Google Search Console will show you schema
-						errors across your site — check it regularly. For bonus
-						points, add the structured-data-validator to your CI/CD
-						pipeline so schema issues get caught before they ship.
-						[DEMO TIME] 1. Open
-						sugarspunrun.com/the-best-pizza-dough-recipe/ — View
-						Source, search for "application/ld+json". Show the
-						Recipe schema. 2. Open
-						cookingshooking.com/veg-pizza-with-dough/ — View Source,
-						no JSON-LD schema. 3. Google "best pizza recipe" — Sugar
-						Spun Run has stars and cook time, Cooking Shooking
-						doesn't. 4. Optionally paste Organization JSON-LD into
-						Rich Results Test to show the validation tool. If
-						internet is unreliable, show the screenshot instead.
-					</aside>
-				</section>
-
-				<!-- ==========================================
-           SLIDE 12: Getting Started Today
-           ========================================== -->
-				<section>
-					<h2>5 Things You Can<br />Do Tonight</h2>
-					<div class="accent-line"></div>
-
-					<ol>
-						<li>
-							<strong>Add Organization schema</strong>to your
-							homepage &mdash; takes 10 minutes
-						</li>
-						<li>
-							<strong>Add FAQPage schema</strong>to any page with
-							FAQ content &mdash; free rich results
-						</li>
-						<li>
-							<strong>Run your site</strong>through Google Rich
-							Results Test &mdash; see what you're missing
-						</li>
-						<li>
-							<strong>Use JSON-LD,</strong>not Microdata &mdash;
-							cleaner, no HTML changes, easier to maintain
-						</li>
-						<li>
-							<strong>Add validation</strong>to your deploy
-							pipeline &mdash; catch schema bugs before they ship
-						</li>
-					</ol>
-
-					<aside class="notes">
-						Keep this actionable. The goal is that everyone in this
-						room goes home and adds at least one schema to their
-						project this week. Organization schema on your homepage
-						is the "hello world" — it's the easiest starting point.
-						FAQPage is the highest ROI if you have any FAQ content.
-						And always validate. Always.
-					</aside>
-				</section>
-
-				<!-- ==========================================
-           SLIDE 13: Resources
-           ========================================== -->
-				<section>
-					<h2>Resources</h2>
-					<div class="accent-line"></div>
-
-					<div class="resource-list">
-						<div class="resource-item">
-							<span class="resource-icon">&#128218;</span>
-							<span class="resource-name">Schema.org</span>
-							<span class="resource-url">schema.org</span>
-						</div>
-						<div class="resource-item">
-							<span class="resource-icon">&#128270;</span>
-							<span class="resource-name"
-								>Google Search Central &mdash; Structured
-								Data</span
-							>
-							<span class="resource-url"
-								>developers.google.com</span
-							>
-						</div>
-						<div class="resource-item">
-							<span class="resource-icon">&#9989;</span>
-							<span class="resource-name"
-								>Google Rich Results Test</span
-							>
-							<span class="resource-url"
-								>search.google.com/test/rich-results</span
-							>
-						</div>
-						<div class="resource-item">
-							<span class="resource-icon">&#128295;</span>
-							<span class="resource-name"
-								>Schema Markup Validator</span
-							>
-							<span class="resource-url"
-								>validator.schema.org</span
-							>
-						</div>
-						<div class="resource-item">
-							<span class="resource-icon">&#128230;</span>
-							<span class="resource-name"
-								>structured-data-validator (my fork)</span
-							>
-							<span class="resource-url"
-								>npm: @gsriram24/structured-data-validator</span
-							>
-						</div>
-					</div>
-
-					<aside class="notes">
-						All these links will be in the slides — I'll share the
-						deck after the talk. Schema.org is your vocabulary
-						reference. Google Search Central tells you which types
-						support rich results and what fields are required vs
-						optional. The Rich Results Test is your pre-flight
-						check. And my fork of the validator is on npm if you
-						want programmatic validation in your CI/CD pipeline.
-					</aside>
-				</section>
-
-				<!-- ==========================================
-           SLIDE 14: Thank You / Q&A
-           ========================================== -->
-				<section>
-					<div class="thankyou-content">
-						<h1>Thank You!</h1>
-
-						<!-- QR Code linking to Linkbout -->
-						<div style="margin-top: 8px">
-							<img
-								src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://www.linkbout.com/box/69e24129a2910262cad0541e/reactplay-meetup-april-18th-sriram&bgcolor=0a0e27&color=00e5ff"
-								alt="Linktree QR Code"
 								style="
-									width: 300px;
-									height: 300px;
+									margin-top: 18px;
+									padding-top: 12px;
+									border-top: 1px solid
+										rgba(255, 255, 255, 0.1);
+									font-size: 0.4em;
+									color: var(--text-muted);
+									font-family:
+										&quot;JetBrains Mono&quot;, monospace;
+									line-height: 1.8;
+								"
+							>
+								<div>schema.org</div>
+								<div>developers.google.com/search/docs</div>
+								<div>nextjs.org/docs/app/guides/json-ld</div>
+								<div>search.google.com/test/rich-results</div>
+								<div>
+									npm: @gsriram24/structured-data-validator
+								</div>
+							</div>
+						</div>
+
+						<div style="text-align: center">
+							<img
+								src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.linkbout.com/box/69e24129a2910262cad0541e/reactplay-meetup-april-18th-sriram&bgcolor=0a0e27&color=00e5ff"
+								alt="Linkbout QR Code"
+								style="
+									width: 320px;
+									height: 320px;
 									border-radius: 10px;
 									border: 2px solid rgba(0, 229, 255, 0.2);
 								"
@@ -1101,33 +1643,43 @@
 								style="
 									font-family:
 										&quot;JetBrains Mono&quot;, monospace;
-									font-size: 0.45em;
+									font-size: 0.4em;
 									color: var(--text-muted);
 									margin-top: 8px;
 								"
 							>
-								Scan for slides, links & socials
+								Slides, links &amp; socials
+							</p>
+							<p
+								style="
+									font-size: 0.6em;
+									color: var(--cyan);
+									margin-top: 12px;
+									font-family:
+										&quot;JetBrains Mono&quot;, monospace;
+								"
+							>
+								Questions?
 							</p>
 						</div>
-
-						<p
-							style="
-								font-size: 1.1em;
-								margin-top: 12px;
-								color: var(--cyan);
-								font-family:
-									&quot;JetBrains Mono&quot;, monospace;
-							"
-						>
-							Questions?
-						</p>
 					</div>
 
 					<aside class="notes">
-						Open the floor for questions. Point at the QR code — it
-						links to your Linktree with slides, socials, and the
-						validator npm package. If time permits, offer to walk
-						through more examples or do a live validation demo.
+						Three takeaways. One: schema markup verifiably enables
+						Google's rich result features — stars, FAQ dropdowns,
+						Knowledge Graph entries. The AI search angle? Google
+						says it's not required for AI Overviews. Don't oversell
+						it to your team or stakeholders. Two: schema is not a
+						ranking factor. Be honest about this when people ask. It
+						enables features, not rankings. Three: for Google and
+						Bing, any rendering strategy works — even CSR via
+						JavaScript injection, which Google explicitly documents.
+						For everything else — GPTBot, Perplexity, smaller
+						crawlers — server-render. If you're starting fresh,
+						default to Server Components in Next.js App Router. If
+						you're stuck in CSR, use the JS injection pattern.
+						Resources on screen. QR code links to my socials and
+						slides. Thank you, and I'm happy to take questions.
 					</aside>
 				</section>
 			</div>
