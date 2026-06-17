@@ -140,145 +140,97 @@
 				</section>
 
 				<!-- ==========================================
-           SLIDE 2: The Hook — What Google Initially Downloads
+           SLIDE 2: The Hook — Same Website, Two Results
            ========================================== -->
 				<section>
-					<h2>What Google Initially Downloads</h2>
+					<h2>Same Website. Two Search Results.</h2>
 					<div class="accent-line"></div>
 
-					<div class="split-layout">
-						<!-- Left: Pretty website -->
-						<div>
-							<p
-								style="
-									font-size: 0.45em;
-									color: var(--text-muted);
-									margin-bottom: 6px;
-									font-family:
-										&quot;JetBrains Mono&quot;, monospace;
-								"
-							>
-								What you built
-							</p>
-							<div class="mock-website">
-								<div class="mock-nav">
-									<span class="dot-r"></span>
-									<span class="dot-y"></span>
-									<span class="dot-g"></span>
-									<span>your-react-app.com</span>
-								</div>
-								<div class="mock-body">
-									<div class="mock-hero">
-										Welcome to Your App<br /><span
-											style="
-												font-weight: 400;
-												font-size: 10px;
-												opacity: 0.85;
-											"
-											>A beautifully crafted React
-											experience</span
-										>
-									</div>
-									<div class="mock-cards">
-										<div class="mock-card">
-											<div class="card-icon">&#9881;</div>
-											Features
-										</div>
-										<div class="mock-card">
-											<div class="card-icon">&#9733;</div>
-											Reviews
-										</div>
-										<div class="mock-card">
-											<div class="card-icon">&#9993;</div>
-											Contact
-										</div>
-									</div>
-								</div>
+					<p
+						style="
+							font-size: 0.55em;
+							color: var(--text-dim);
+							margin-top: 8px;
+							margin-bottom: 18px;
+						"
+					>
+						Why are these different?
+					</p>
+
+					<div
+						style="
+							display: grid;
+							grid-template-columns: 1fr 1fr;
+							gap: 16px;
+						"
+					>
+						<!-- Left: Plain result -->
+						<div class="google-result">
+							<div class="result-url">
+								<div class="favicon">A</div>
+								acme.com &rsaquo; products &rsaquo; headphones
+							</div>
+							<div class="result-title">
+								Acme Pro Wireless Headphones | Acme
+							</div>
+							<div class="result-desc">
+								Acme Pro wireless headphones with active noise
+								cancellation, 30-hour battery life, and
+								premium sound quality.
 							</div>
 						</div>
 
-						<!-- Right: Raw HTML -->
-						<div>
-							<p
-								style="
-									font-size: 0.45em;
-									color: var(--text-muted);
-									margin-bottom: 6px;
-									font-family:
-										&quot;JetBrains Mono&quot;, monospace;
-								"
-							>
-								What Googlebot sees on first fetch
-							</p>
-							<div class="mock-html">
-								<span class="tag-name"
-									>&lt;!DOCTYPE html&gt;</span
-								><br />
-								<span class="tag-name">&lt;html&gt;</span><br />
-								<span class="tag-name">&lt;head&gt;</span><br />
-								&nbsp;&nbsp;<span class="tag-name"
-									>&lt;title&gt;</span
-								>Your App<span class="tag-name"
-									>&lt;/title&gt;</span
-								><br />
-								<span class="tag-name">&lt;/head&gt;</span
-								><br />
-								<span class="tag-name">&lt;body&gt;</span><br />
-								&nbsp;&nbsp;<span class="tag-name"
-									>&lt;div</span
+						<!-- Right: Rich result -->
+						<div class="google-result rich">
+							<div class="result-url">
+								<div class="favicon">A</div>
+								acme.com &rsaquo; products &rsaquo; headphones
+							</div>
+							<div class="result-title">
+								Acme Pro Wireless Headphones | Acme
+							</div>
+							<div class="stars">
+								<span class="star"
+									>&#9733;&#9733;&#9733;&#9733;&#9733;</span
 								>
-								<span class="attr-name">id=</span
-								><span class="attr-val">"root"</span
-								><span class="tag-name">&gt;&lt;/div&gt;</span
-								><br />
-								&nbsp;&nbsp;<span class="tag-name"
-									>&lt;script</span
-								>
-								<span class="attr-name">src=</span
-								><span class="attr-val">"/bundle.js"</span
-								><span class="tag-name"
-									>&gt;&lt;/script&gt;</span
-								><br />
-								<span class="tag-name">&lt;/body&gt;</span
-								><br />
-								<span class="tag-name">&lt;/html&gt;</span
-								><br />
-								<br />
-								<span class="comment"
-									>&lt;!-- Empty shell. Content is in JS.
-									--&gt;</span
-								>
+								<span class="rating">4.6 (1,247)</span>
+							</div>
+							<div class="result-desc">
+								<strong style="color: #202124">$199.00</strong>
+								&middot; In stock &middot; Active noise
+								cancellation, 30-hour battery life, premium
+								sound.
 							</div>
 						</div>
 					</div>
 
 					<p
+						class="fragment fade-up"
 						style="
 							text-align: center;
-							margin-top: 16px;
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 0.55em;
+							margin-top: 28px;
+							font-size: 0.85em;
 							color: var(--cyan);
+							font-family: &quot;JetBrains Mono&quot;, monospace;
 						"
 					>
-						Yes, Googlebot renders JS. But quoting Google:
-						<em>"not all bots can run JavaScript."</em>
+						The difference: <strong>Schema Markup.</strong>
 					</p>
 
 					<aside class="notes">
-						Here's what Googlebot receives on the initial crawl of a
-						typical client-side rendered React app — an empty shell.
-						The content is in JavaScript. Important caveat: Google
-						does eventually render that JavaScript using a headless
-						Chromium. Bing does the same with Microsoft Edge. So
-						technically, Google and Bing can see your CSR content.
-						But Google itself says, and I quote from their
-						JavaScript SEO docs: "Server-side or pre-rendering is
-						still a great idea because it makes your website faster
-						for users and crawlers, and not all bots can run
-						JavaScript." That last clause is the interesting part.
-						Even Google acknowledges other crawlers don't render
-						JavaScript. We'll see who in a few slides.
+						Same domain. Same product page. Same content. Two
+						different search results.
+
+						Pause for a beat &mdash; let the audience look at
+						both. The contrast is obvious: stars, price, "in
+						stock" on the right; plain blue link on the left.
+
+						[CLICK]
+
+						The difference is schema markup. That's what we're
+						going to learn today &mdash; what it is, how to add
+						it to a React app correctly, and the rendering traps
+						that silently break it.
 					</aside>
 				</section>
 
@@ -358,91 +310,152 @@
 				</section>
 
 				<!-- ==========================================
-           SLIDE 4: FAQ Schema in Action
+           SLIDE 4: Back to Our Example — Product Schema
            ========================================== -->
-				<section style="padding: 32px 64px">
-					<h2 style="margin-bottom: 0.2em">
-						Schema in Action: FAQPage
-					</h2>
+				<section style="padding: 32px 48px">
+					<h2 style="margin-bottom: 0.2em">Back to Our Example</h2>
 					<div class="accent-line"></div>
+
+					<p
+						style="
+							font-size: 0.55em;
+							color: var(--text-dim);
+							margin-top: 8px;
+							margin-bottom: 18px;
+						"
+					>
+						Behind those stars, that price, that "In stock"
+						badge&hellip;
+					</p>
 
 					<div
 						style="
-							display: flex;
-							justify-content: space-between;
+							display: grid;
+							grid-template-columns: 1fr 1fr;
 							gap: 20px;
-							margin-top: 16px;
+							align-items: start;
 						"
 					>
-						<div>
-							<pre
-								style="font-size: 0.8em"
-							><code data-trim data-noescape class="language-json">{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [{
-    "@type": "Question",
-    "name": "What is schema markup?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Structured data that tells
-        search engines what your content
-        means..."
-    }
-  }]
-}</code></pre>
-							<div class="callout">
-								<code>mainEntity</code> is an array of Questions
+						<!-- Left: Both results from slide 2 (callback) -->
+						<div
+							style="
+								display: flex;
+								flex-direction: column;
+								gap: 14px;
+							"
+						>
+							<!-- Plain result -->
+							<div>
+								<p
+									class="result-label plain"
+									style="margin-bottom: 4px"
+								>
+									Without
+								</p>
+								<div class="google-result">
+									<div class="result-url">
+										<div class="favicon">A</div>
+										acme.com &rsaquo; products &rsaquo;
+										headphones
+									</div>
+									<div class="result-title">
+										Acme Pro Wireless Headphones | Acme
+									</div>
+									<div class="result-desc">
+										Acme Pro wireless headphones with
+										active noise cancellation, 30-hour
+										battery life.
+									</div>
+								</div>
 							</div>
-							<div class="callout" style="color: var(--warning)">
-								<code>acceptedAnswer</code> must be an object,
-								not a string!
+
+							<!-- Rich result -->
+							<div>
+								<p
+									class="result-label rich-label"
+									style="margin-bottom: 4px"
+								>
+									With
+								</p>
+								<div class="google-result rich">
+									<div class="result-url">
+										<div class="favicon">A</div>
+										acme.com &rsaquo; products &rsaquo;
+										headphones
+									</div>
+									<div class="result-title">
+										Acme Pro Wireless Headphones | Acme
+									</div>
+									<div class="stars">
+										<span class="star"
+											>&#9733;&#9733;&#9733;&#9733;&#9733;</span
+										>
+										<span class="rating">4.6 (1,247)</span>
+									</div>
+									<div class="result-desc">
+										<strong style="color: #202124"
+											>$199.00</strong
+										>
+										&middot; In stock &middot; Active
+										noise cancellation, 30-hour battery
+										life.
+									</div>
+								</div>
 							</div>
 						</div>
 
-						<div style="display: flex; align-items: start">
-							<div class="screenshot-slot">
-								<img
-									src="assets/images/faq-rich-result.png"
-									alt="FAQ rich result in Google"
-									style="
-										max-height: 440px;
-										width: 100%;
-										object-fit: contain;
-										border-radius: 8px;
-									"
-								/>
+						<!-- Right: The Product schema (revealed on click) -->
+						<div
+							class="fragment fade-up"
+							style="min-width: 0; overflow: hidden"
+						>
+							<pre
+								style="font-size: 0.45em; margin-top: 0; max-width: 100%; overflow: hidden"
+							><code data-trim data-noescape class="language-json">{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Acme Pro Wireless Headphones",
+  "image": "https://acme.com/headphones.jpg",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 4.6,
+    "reviewCount": 1247
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": 199.00,
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  }
+}</code></pre>
+							<div class="callout">
+								<code>aggregateRating</code> &rarr; stars +
+								review count
+							</div>
+							<div class="callout">
+								<code>offers</code> &rarr; price + availability
 							</div>
 						</div>
 					</div>
 
-					<p
-						style="
-							text-align: center;
-							margin-top: 12px;
-							font-family: &quot;JetBrains Mono&quot;, monospace;
-							font-size: 0.55em;
-							color: var(--cyan);
-						"
-					>
-						This is what schema unlocks:
-						<em>free real estate in search results.</em>
-					</p>
-
 					<aside class="notes">
-						Here's why this matters in practice. This is FAQPage
-						schema. Twelve lines of JSON. And this is what it
-						produces in Google — expandable Q&amp;A dropdowns right
-						inside the search result. Your result takes up more
-						visual space, shows more useful information at a glance,
-						gets more clicks. Two things to notice. mainEntity is an
-						array — you can have multiple questions. And
-						acceptedAnswer must be an object with @type Answer, not
-						a plain string. That's one of the most common bugs —
-						people put the answer as a string, validation fails, no
-						rich results. If you have any FAQ content on your site,
-						and most sites do, this is one of the highest-ROI
-						schemas you can add.
+						Remember that rich result from a minute ago? Same
+						headphones page, with the stars, the price, the "in
+						stock" badge.
+
+						[CLICK]
+
+						This is the Product schema that produces it. Same
+						page, with this small JSON-LD block in the head.
+
+						Note the structure: aggregateRating maps directly to
+						the stars and review count you see. offers maps to
+						the price and availability. The fields aren't
+						arbitrary &mdash; they correspond to specific rich
+						result features Google supports.
+
+						Source: Google's Product structured data docs at
+						developers.google.com/search/docs/appearance/structured-data/product.
 					</aside>
 				</section>
 
@@ -594,8 +607,8 @@
 										font-style: italic;
 									"
 								>
-									"loss of rich result eligibility without
-									affecting web search rankings"
+									"...doesn't affect how the page ranks in
+									Google web search"
 								</p>
 								<p
 									style="
@@ -660,6 +673,21 @@
 							</div>
 						</div>
 					</div>
+
+					<p
+						style="
+							text-align: center;
+							margin-top: 18px;
+							font-size: 0.55em;
+							color: var(--cyan);
+							font-family:
+								&quot;JetBrains Mono&quot;, monospace;
+						"
+					>
+						Schema is still essential &mdash; for rich results,
+						Knowledge Graph, and structured content. Just not
+						<strong>ABSOLUTELY MANDATORY</strong> for AI search.
+					</p>
 
 					<aside class="notes">
 						Why does this matter now? AI search is real. Perplexity,
@@ -1344,7 +1372,7 @@ export default function ProductSchema() {
 									"
 								>
 									<code>JSON.stringify</code> doesn't
-									sanitize. Next.js docs require replacing
+									sanitize. Next.js docs recommend replacing
 									<code>&lt;</code> with
 									<code>&#92;u003c</code>.
 								</td>
@@ -1473,8 +1501,8 @@ export default function ProductSchema() {
 						JSON.stringify does not sanitize HTML. If your schema
 						content contains a less-than sign &mdash; say, in a
 						description with comparison operators &mdash; you've
-						shipped an XSS vector. Next.js docs require you to
-						replace less-than with backslash-u-003c. Three: SSG with
+						shipped an XSS vector. Next.js docs recommend
+						replacing less-than with backslash-u-003c. Three: SSG with
 						dynamic data. If you use Gatsby, Astro, or Next.js
 						static export to bake your pages at build time, your
 						schema is frozen. Prices change, inventory runs out,
