@@ -446,14 +446,15 @@
 
 						[CLICK]
 
-						This is the Product schema that produces it. Same
-						page, with this small JSON-LD block in the head.
+						This is the Product schema that makes it eligible.
+						Same page, with this small JSON-LD block in the head.
 
-						Note the structure: aggregateRating maps directly to
-						the stars and review count you see. offers maps to
+						Note the structure: aggregateRating contributes to
+						the stars and review count. offers contributes to
 						the price and availability. The fields aren't
 						arbitrary &mdash; they correspond to specific rich
-						result features Google supports.
+						result features Google supports, though Google
+						decides what to actually show.
 
 						Source: Google's Product structured data docs at
 						developers.google.com/search/docs/appearance/structured-data/product.
@@ -685,9 +686,10 @@
 								&quot;JetBrains Mono&quot;, monospace;
 						"
 					>
-						Schema is still essential &mdash; for rich results,
-						Knowledge Graph, and structured content. Just not
-						<strong>ABSOLUTELY MANDATORY</strong> for AI search.
+						Schema is still worth shipping &mdash; for rich
+						results, Knowledge Graph, and structured content.
+						Just not <strong>ABSOLUTELY MANDATORY</strong> for AI
+						search.
 					</p>
 
 					<aside class="notes">
@@ -1018,7 +1020,7 @@
 									margin: 0;
 								"
 							>
-								Any rendering works (CSR with delay)
+								CSR can work. SSR is safer.
 							</p>
 						</div>
 
@@ -1606,9 +1608,9 @@ export default function ProductSchema() {
 												margin: 0;
 											"
 										>
-											Google &amp; Bing: any rendering
-											works (CSR via JS injection is
-											documented). Everything else:
+											Google &amp; Bing: CSR can work
+											(JS injection is documented), but
+											SSR is safer. Everything else:
 											server-render.
 										</p>
 									</div>
@@ -1682,10 +1684,10 @@ export default function ProductSchema() {
 						it to your team or stakeholders. Two: schema is not a
 						ranking factor. Be honest about this when people ask. It
 						enables features, not rankings. Three: for Google and
-						Bing, any rendering strategy works — even CSR via
-						JavaScript injection, which Google explicitly documents.
-						For everything else — GPTBot, Perplexity, smaller
-						crawlers — server-render. If you're starting fresh,
+						Bing, CSR can work — even via JavaScript injection,
+						which Google explicitly documents — but server-rendering
+						is safer. For everything else — GPTBot, Perplexity,
+						smaller crawlers — server-render. If you're starting fresh,
 						default to Server Components in Next.js App Router. If
 						you're stuck in CSR, use the JS injection pattern.
 						Resources on screen. QR code links to my socials and
