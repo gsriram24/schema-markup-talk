@@ -267,8 +267,9 @@
 									<code>&lt;script&gt;</code> tag
 								</li>
 								<li>
-									<strong>No HTML changes</strong> &mdash;
-									sits separately from your markup
+									<strong>No HTML changes</strong> (with
+									JSON-LD) &mdash; sits separately in a
+									script tag
 								</li>
 							</ul>
 						</div>
@@ -287,8 +288,8 @@
   ]
 }</code></pre>
 							<div class="callout">
-								<code>@context</code> + <code>@type</code> are
-								required on every schema
+								<code>@context</code> at the top level,
+								<code>@type</code> on each entity
 							</div>
 						</div>
 					</div>
@@ -521,8 +522,8 @@
 										margin: 0;
 									"
 								>
-									Star ratings, FAQs, recipe cards, prices,
-									breadcrumbs in search results.
+									Star ratings, recipe cards, prices,
+									breadcrumbs, videos in search results.
 								</p>
 							</div>
 
@@ -696,8 +697,8 @@
 						confusion about what schema markup actually does in this
 						new era. Let me give you the short version. What is
 						schema for? Three things, all verifiable from Google's
-						docs. Rich results &mdash; twenty-five-plus types like
-						stars, FAQ dropdowns, recipe cards. Knowledge Graph
+						docs. Rich results &mdash; twenty-plus types like
+						stars, recipe cards, product snippets. Knowledge Graph
 						entries &mdash; the brand info panels you see in Google.
 						And content classification &mdash; helping engines
 						understand what your content means. What is schema NOT
@@ -1391,7 +1392,7 @@ export default function ProductSchema() {
 											font-size: 0.85em;
 										"
 									>
-										Prices, inventory, FAQs
+										Prices, inventory, event dates
 									</span>
 								</td>
 								<td
@@ -1506,7 +1507,7 @@ export default function ProductSchema() {
 						dynamic data. If you use Gatsby, Astro, or Next.js
 						static export to bake your pages at build time, your
 						schema is frozen. Prices change, inventory runs out,
-						FAQs get updated &mdash; but your schema still says what
+						event dates pass &mdash; but your schema still says what
 						it said at build time. Google treats this mismatch as
 						misleading content and can issue a manual action. Four:
 						schema that reads cookies, localStorage, or session
@@ -1547,8 +1548,8 @@ export default function ProductSchema() {
 												text-transform: none;
 											"
 										>
-											Schema unlocks rich results and
-											Knowledge Graph
+											Schema makes pages eligible for rich
+											results and Knowledge Graph
 										</h3>
 										<p
 											style="
@@ -1675,7 +1676,7 @@ export default function ProductSchema() {
 
 					<aside class="notes">
 						Three takeaways. One: schema markup verifiably enables
-						Google's rich result features — stars, FAQ dropdowns,
+						Google's rich result features — stars, recipe cards,
 						Knowledge Graph entries. The AI search angle? Google
 						says it's not required for AI Overviews. Don't oversell
 						it to your team or stakeholders. Two: schema is not a
